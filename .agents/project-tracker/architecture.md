@@ -1,0 +1,71 @@
+---
+sources:
+  - "README.md"
+  - ".agents/plugins/marketplace.json"
+  - "scripts/*.py"
+  - "plugins/**/*"
+  - "templates/**/*"
+  - "tests/**/*"
+---
+
+# Architecture
+
+## Overview
+
+```text
++---------------------------+
+| .agents/plugins           |
+| marketplace manifest      |
++-------------+-------------+
+              |
+              v
++---------------------------+       +---------------------------+
+| plugins/<language>        |       | templates/                |
+| installable hook plugins  |<------| language-hook-template    |
++-------------+-------------+       +---------------------------+
+              |
+              v
++---------------------------+
+| hook scripts              |
+| PostToolUse / Stop        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+| host tools + PLUGIN_DATA  |
+| clang, ctest, SQLite      |
++---------------------------+
+```
+
+## Module Breakdown
+
+| Module | Responsibility | Key files |
+|--------|----------------|-----------|
+| Marketplace | Declares locally available plugins and installation policy. | `.agents/plugins/marketplace.json` |
+| Plugin generator | Copies the language template, rewrites plugin metadata, and appends marketplace entries. | `scripts/create_language_hook_plugin.py` |
+| Language template | Minimal plugin skeleton for future language hook packages. | `templates/language-hook-template/` |
+| C++ plugin manifest | Describes the C++ hook plugin and its hook registrations. | `plugins/cpp-lang-hooks/.codex-plugin/plugin.json`, `plugins/cpp-lang-hooks/hooks/hooks.json` |
+| Hook common utilities | Parse hook input, collect edited file paths, walk upward for project files, and emit hook responses. | `plugins/cpp-lang-hooks/scripts/common/hook.mjs` |
+| C++ post-edit hook | Runs `clang-format` and `clang-tidy` on edited C/C++ files and marks turn state. | `plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs` |
+| C++ stop hook | Runs `ctest` for CMake projects only when state says the current turn changed C/C++ files. | `plugins/cpp-lang-hooks/scripts/stop_hook.mjs` |
+| C++ turn state | Stores per-turn C/C++ change flags in SQLite under `PLUGIN_DATA`. | `plugins/cpp-lang-hooks/scripts/common/turn_state.mjs` |
+
+## Data Flow
+
+1. A Codex edit tool triggers the C++ plugin `PostToolUse` hook.
+2. `collectHookFilePaths()` extracts edited paths from `tool_input` or `apply_patch` content.
+3. C/C++ files that still exist are formatted, linted, and recorded as changed for `input.turn_id`.
+4. A Codex `Stop` event invokes `stop_hook.mjs`.
+5. The stop hook reads SQLite turn state. If the current turn definitely has no C/C++ changes, it skips `ctest`; otherwise it falls back to the previous CMake/`ctest` behavior.
+
+## Design Patterns
+
+- Template Method style scaffolding: `create_language_hook_plugin.py` copies a fixed template and rewrites known metadata fields.
+- Fail-open hook state: if `PLUGIN_DATA`, `turn_id`, or SQLite access is unavailable, the stop hook runs `ctest` rather than silently trusting missing state.
+- Local host tool delegation: hooks call external C++ tools when installed and silently skip missing optional tools.
+
+## Security Boundaries
+
+- Hook scripts execute local commands (`clang-format`, `clang-tidy`, `ctest`) against repository files, so they should keep arguments structured and avoid shell interpolation.
+- Plugin state is stored only under `PLUGIN_DATA`; repository files are not used for runtime hook state.
+- The generator writes to `plugins/` and `.agents/plugins/marketplace.json`; it validates plugin names and JSON object shapes before writing.

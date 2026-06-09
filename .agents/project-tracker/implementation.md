@@ -1,0 +1,51 @@
+---
+sources:
+  - "scripts/*.py"
+  - "plugins/**/*.mjs"
+  - "plugins/**/*.json"
+  - "templates/**/*.mjs"
+  - "templates/**/*.json"
+  - "tests/**/*.mjs"
+---
+
+# Implementation Details
+
+## Entry Points
+
+| Target | File | Purpose |
+|--------|------|---------|
+| Plugin generator CLI | `scripts/create_language_hook_plugin.py` | Creates a new plugin from `templates/language-hook-template/` and updates marketplace metadata. |
+| C++ post-edit hook | `plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs` | Processes edited C/C++ files after edit tools. |
+| C++ stop hook | `plugins/cpp-lang-hooks/scripts/stop_hook.mjs` | Runs or skips `ctest` at turn stop. |
+| Hook test suite | `tests/cpp-lang-hooks/stateful_hooks.test.mjs` | Exercises hook scripts through child processes. |
+
+## Key Algorithms & Logic
+
+- `normalize_name()` lowercases plugin names, replaces non-alphanumeric runs with `-`, trims separators, and enforces a 64-character limit.
+- `collectHookFilePaths()` supports ordinary edit tool inputs and parses `apply_patch` headers, including file moves.
+- `runClangTidy()` finds the nearest `CMakeLists.txt`, then prefers `build/compile_commands.json` when present.
+- `markCppChanged()` upserts `cpp_changed = 1` for a turn in SQLite.
+- `didCppChange()` returns `true` for known C++ changes, `false` for known no-change rows/missing rows, and `null` when state cannot be trusted.
+- `stop_hook.mjs` skips `ctest` only on a definite `false`; missing state falls through to the previous `ctest` behavior.
+
+## Error Handling Strategy
+
+- Hook scripts emit blocking JSON when a required command fails.
+- Missing `clang-format`, `clang-tidy`, or `ctest` binaries are treated as non-blocking.
+- Shared hook errors are logged to `${PLUGIN_DATA}/hook_errors.log` when possible.
+- SQLite failures are swallowed by state helpers and represented as `false` or `null`, so hooks keep developer flow moving.
+- The Python generator raises explicit errors for invalid plugin names, invalid JSON shapes, missing templates, or duplicate target directories.
+
+## Testing Strategy
+
+| Test level | Location | What it covers |
+|------------|----------|----------------|
+| Hook integration | `tests/cpp-lang-hooks/stateful_hooks.test.mjs` | Post-edit state marking, stop-hook skip/run decisions, missing `turn_id`, and missing `PLUGIN_DATA`. |
+| Manual syntax | N/A | `node --check` for hook scripts and tests. |
+| Generator smoke | N/A | Not currently covered by automated tests. |
+
+## Performance Considerations
+
+- The stateful stop hook avoids running `ctest` on turns without C/C++ edits.
+- SQLite connections are opened per state operation and closed immediately, keeping hook code simple and isolated.
+- Hook file detection filters to known C/C++ extensions before invoking external tooling.
