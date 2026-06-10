@@ -12,7 +12,20 @@ import {
 } from "./common/hook.mjs";
 import { markPythonChanged } from "./common/turn_state.mjs";
 
-const PYTHON_EXTENSIONS = [".py"];
+const PYTHON_CODE_EXTENSIONS = [".py", ".pyi"];
+const PYTHON_CONFIG_FILENAMES = new Set([
+  "pyproject.toml",
+  "setup.cfg",
+  "setup.py",
+  "tox.ini",
+  "pytest.ini",
+  "unittest.cfg",
+  "mypy.ini",
+  "pyrightconfig.json",
+  ".pylintrc",
+  "ruff.toml",
+  ".ruff.toml",
+]);
 
 function shouldRunFormat() {
   return envEnabled("PYTHON_HOOKS_FORMAT");
@@ -69,9 +82,13 @@ function formatProject(projectRoot, files) {
 
 function main(input) {
   const cwd = typeof input?.cwd === "string" ? input.cwd : process.cwd();
-  const pythonPaths = collectHookFilePaths(input, cwd).filter((targetPath) =>
-    PYTHON_EXTENSIONS.includes(path.extname(targetPath).toLowerCase()),
-  );
+  const pythonPaths = collectHookFilePaths(input, cwd).filter((targetPath) => {
+    const basename = path.basename(targetPath);
+    return (
+      PYTHON_CODE_EXTENSIONS.includes(path.extname(targetPath).toLowerCase()) ||
+      PYTHON_CONFIG_FILENAMES.has(basename)
+    );
+  });
 
   if (pythonPaths.length === 0) {
     quitHook({ continue: true });
@@ -84,7 +101,11 @@ function main(input) {
     const projectRoot = pythonProjectRootForPath(pythonPath);
     pushUnique(projectRoots, projectRoot);
 
-    if (existsSync(pythonPath)) {
+    const isFormatterEligible =
+      PYTHON_CODE_EXTENSIONS.includes(path.extname(pythonPath).toLowerCase()) &&
+      !PYTHON_CONFIG_FILENAMES.has(path.basename(pythonPath));
+
+    if (isFormatterEligible && existsSync(pythonPath)) {
       const files = existingFilesByProjectRoot.get(projectRoot) || [];
       pushUnique(files, pythonPath);
       existingFilesByProjectRoot.set(projectRoot, files);

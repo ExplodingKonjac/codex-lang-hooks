@@ -114,11 +114,16 @@ export function findUp(startDir, targetName) {
 
 const PYTHON_PROJECT_MARKERS = [
   "pyproject.toml",
-  "setup.py",
   "setup.cfg",
+  "setup.py",
   "tox.ini",
   "pytest.ini",
   "unittest.cfg",
+  "mypy.ini",
+  "pyrightconfig.json",
+  ".pylintrc",
+  "ruff.toml",
+  ".ruff.toml",
 ];
 const VENV_NAMES = [".venv", "venv", ".env", "env"];
 
