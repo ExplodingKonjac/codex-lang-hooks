@@ -35,14 +35,9 @@ export function collectHookFilePaths(input) {
     const [, action, filePath, movedPath] = match;
 
     if (movedPath) {
-      if (updatedFileIndex >= 0) {
-        const previousPath = files[updatedFileIndex];
-        if (previousPath) {
-          seen.delete(previousPath);
-        }
-
-        files[updatedFileIndex] = movedPath;
+      if (updatedFileIndex >= 0 && !seen.has(movedPath)) {
         seen.add(movedPath);
+        files.push(movedPath);
       }
       continue;
     }

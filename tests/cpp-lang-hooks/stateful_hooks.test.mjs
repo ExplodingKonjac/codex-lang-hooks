@@ -23,7 +23,7 @@ const STOP_HOOK = path.join(
   "plugins/cpp-lang-hooks/scripts/stop_hook.mjs",
 );
 
-function makeFixture() {
+function makeFixture({ buildMarker = true } = {}) {
   const dir = mkdtempSync(path.join(tmpdir(), "cpp-lang-hooks-"));
   const projectDir = path.join(dir, "project");
   const buildDir = path.join(projectDir, "build");
@@ -38,6 +38,9 @@ function makeFixture() {
   );
   writeFileSync(path.join(projectDir, "main.cpp"), "int main(){return 0;}\n");
   writeFileSync(path.join(projectDir, "README.md"), "# test\n");
+  if (buildMarker) {
+    writeFileSync(path.join(buildDir, "CTestTestfile.cmake"), "# tests\n");
+  }
   return { dir, projectDir, binDir, pluginData };
 }
 
@@ -114,6 +117,53 @@ test("post-edit non-C++ file does not mark the turn", () => {
   assert.equal(readCppChanged(fixture.pluginData, "turn-docs"), null);
 });
 
+test("post-edit deleted C++ file marks the turn as changed", () => {
+  const fixture = makeFixture();
+  const result = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-delete",
+      tool_name: "apply_patch",
+      tool_input: {
+        command: [
+          "*** Begin Patch",
+          "*** Delete File: removed.cpp",
+          "*** End Patch",
+        ].join("\n"),
+      },
+    },
+    { env: { PLUGIN_DATA: fixture.pluginData } },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(readCppChanged(fixture.pluginData, "turn-delete"), 1);
+});
+
+test("post-edit renamed C++ source path marks the turn as changed", () => {
+  const fixture = makeFixture();
+  const result = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-rename",
+      tool_name: "apply_patch",
+      tool_input: {
+        command: [
+          "*** Begin Patch",
+          "*** Update File: old.cpp",
+          "*** Move to: docs/old.txt",
+          "*** End Patch",
+        ].join("\n"),
+      },
+    },
+    { env: { PLUGIN_DATA: fixture.pluginData } },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(readCppChanged(fixture.pluginData, "turn-rename"), 1);
+});
+
 test("multiple C++ edits in one turn keep the turn marked changed", () => {
   const fixture = makeFixture();
   for (const filePath of ["main.cpp", "main.cpp"]) {
@@ -133,12 +183,50 @@ test("multiple C++ edits in one turn keep the turn marked changed", () => {
   assert.equal(readCppChanged(fixture.pluginData, "turn-repeat"), 1);
 });
 
+test("post-edit clang-tidy uses first supported compile commands directory", () => {
+  const fixture = makeFixture({ buildMarker: false });
+  const tidyLog = path.join(fixture.dir, "clang-tidy.log");
+  const debugBuildDir = path.join(fixture.projectDir, "cmake-build-debug");
+  mkdirSync(debugBuildDir, { recursive: true });
+  writeFileSync(path.join(debugBuildDir, "compile_commands.json"), "[]\n");
+  writeExecutable(
+    path.join(fixture.binDir, "clang-tidy"),
+    `#!/bin/sh\nprintf '%s' "$*" > "${tidyLog}"\nexit 0\n`,
+  );
+
+  const result = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-tidy-debug",
+      tool_name: "Edit",
+      tool_input: { file_path: "main.cpp" },
+    },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(
+    readFileSync(tidyLog, "utf8"),
+    path.join(fixture.projectDir, "main.cpp") + " -p " + debugBuildDir,
+  );
+});
+
 test("stop skips ctest when the turn has no C++ changes", () => {
   const fixture = makeFixture();
   const ctestLog = path.join(fixture.dir, "ctest.log");
   writeExecutable(
     path.join(fixture.binDir, "ctest"),
     `#!/bin/sh\nprintf run > "${ctestLog}"\nexit 0\n`,
+  );
+  writeExecutable(
+    path.join(fixture.binDir, "cmake"),
+    "#!/bin/sh\nexit 0\n",
   );
 
   const result = runHook(
@@ -187,7 +275,7 @@ test("stop invokes ctest when the turn has C++ changes", () => {
     {
       env: {
         PLUGIN_DATA: fixture.pluginData,
-        PATH: `${fixture.binDir}${path.delimiter}${process.env.PATH}`,
+        PATH: fixture.binDir,
       },
     },
   );
@@ -195,6 +283,126 @@ test("stop invokes ctest when the turn has C++ changes", () => {
   assert.equal(result.status, 0, result.stderr);
   assert.equal(result.stdout, '{"continue":true}');
   assert.match(readFileSync(ctestLog, "utf8"), /--test-dir/);
+});
+
+test("stop builds before ctest when build directory exists", () => {
+  const fixture = makeFixture();
+  const logPath = path.join(fixture.dir, "build-and-test.log");
+  writeExecutable(
+    path.join(fixture.binDir, "cmake"),
+    `#!/bin/sh\nprintf 'cmake:%s\\n' "$*" >> "${logPath}"\nexit 0\n`,
+  );
+  writeExecutable(
+    path.join(fixture.binDir, "ctest"),
+    `#!/bin/sh\nprintf 'ctest:%s\\n' "$*" >> "${logPath}"\nexit 0\n`,
+  );
+  const markResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-build",
+      tool_name: "Edit",
+      tool_input: { file_path: "main.cpp" },
+    },
+    { env: { PLUGIN_DATA: fixture.pluginData } },
+  );
+  assert.equal(markResult.status, 0, markResult.stderr);
+
+  const result = runHook(
+    STOP_HOOK,
+    { cwd: fixture.projectDir, turn_id: "turn-build" },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(readFileSync(logPath, "utf8").trim().split("\n"), [
+    "cmake:--build build",
+    "ctest:--test-dir " + path.join(fixture.projectDir, "build") + " --output-on-failure",
+  ]);
+});
+
+test("stop uses first supported build directory", () => {
+  const fixture = makeFixture({ buildMarker: false });
+  const logPath = path.join(fixture.dir, "debug-build-and-test.log");
+  const debugBuildDir = path.join(fixture.projectDir, "cmake-build-debug");
+  mkdirSync(debugBuildDir, { recursive: true });
+  writeFileSync(path.join(debugBuildDir, "CMakeCache.txt"), "# cache\n");
+  writeExecutable(
+    path.join(fixture.binDir, "cmake"),
+    `#!/bin/sh\nprintf 'cmake:%s\\n' "$*" >> "${logPath}"\nexit 0\n`,
+  );
+  writeExecutable(
+    path.join(fixture.binDir, "ctest"),
+    `#!/bin/sh\nprintf 'ctest:%s\\n' "$*" >> "${logPath}"\nexit 0\n`,
+  );
+  const markResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-debug-build",
+      tool_name: "Edit",
+      tool_input: { file_path: "main.cpp" },
+    },
+    { env: { PLUGIN_DATA: fixture.pluginData } },
+  );
+  assert.equal(markResult.status, 0, markResult.stderr);
+
+  const result = runHook(
+    STOP_HOOK,
+    { cwd: fixture.projectDir, turn_id: "turn-debug-build" },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(readFileSync(logPath, "utf8").trim().split("\n"), [
+    "cmake:--build cmake-build-debug",
+    "ctest:--test-dir " + debugBuildDir + " --output-on-failure",
+  ]);
+});
+
+test("missing cmake does not prevent ctest", () => {
+  const fixture = makeFixture();
+  const ctestLog = path.join(fixture.dir, "ctest.log");
+  writeExecutable(
+    path.join(fixture.binDir, "ctest"),
+    `#!/bin/sh\nprintf run > "${ctestLog}"\nexit 0\n`,
+  );
+  const markResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-no-cmake",
+      tool_name: "Edit",
+      tool_input: { file_path: "main.cpp" },
+    },
+    { env: { PLUGIN_DATA: fixture.pluginData } },
+  );
+  assert.equal(markResult.status, 0, markResult.stderr);
+
+  const result = runHook(
+    STOP_HOOK,
+    { cwd: fixture.projectDir, turn_id: "turn-no-cmake" },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout, '{"continue":true}');
+  assert.equal(readFileSync(ctestLog, "utf8"), "run");
 });
 
 test("stop without turn_id preserves current ctest behavior", () => {
@@ -211,7 +419,7 @@ test("stop without turn_id preserves current ctest behavior", () => {
     {
       env: {
         PLUGIN_DATA: fixture.pluginData,
-        PATH: `${fixture.binDir}${path.delimiter}${process.env.PATH}`,
+        PATH: fixture.binDir,
       },
     },
   );
@@ -228,8 +436,12 @@ test("missing PLUGIN_DATA does not crash hooks", () => {
     path.join(fixture.binDir, "ctest"),
     `#!/bin/sh\nprintf run > "${ctestLog}"\nexit 0\n`,
   );
+  writeExecutable(
+    path.join(fixture.binDir, "cmake"),
+    "#!/bin/sh\nexit 0\n",
+  );
   const env = {
-    PATH: `${fixture.binDir}${path.delimiter}${process.env.PATH}`,
+    PATH: fixture.binDir,
     PLUGIN_DATA: "",
   };
 

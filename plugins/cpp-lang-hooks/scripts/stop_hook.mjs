@@ -1,8 +1,43 @@
-import { runHook, quitHook, findUp } from "./common/hook.mjs";
+import {
+  runHook,
+  quitHook,
+  findUp,
+  findCMakeBuildDir,
+} from "./common/hook.mjs";
 import { didCppChange } from "./common/turn_state.mjs";
-import { existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
+
+function runCMakeBuild(projectDir, buildDir, block_on_failed) {
+  const buildArg = path.relative(projectDir, buildDir) || buildDir;
+  const result = spawnSync("cmake", ["--build", buildArg], {
+    cwd: projectDir,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+
+  if (result.error?.code === "ENOENT") {
+    return;
+  }
+
+  if (result.error || result.status !== 0) {
+    const details =
+      result.error?.message ||
+      (result.stderr || result.stdout).trim() ||
+      `exit ${result.status}`;
+    if (block_on_failed) {
+      quitHook({
+        decision: "block",
+        reason: `cmake --build failed: ${details}`,
+      });
+    } else {
+      quitHook({
+        continue: true,
+        systemMessage: `cmake --build still failed: ${details}`,
+      });
+    }
+  }
+}
 
 function runCTest(input, block_on_failed) {
   const cwd = typeof input?.cwd === "string" ? input.cwd : process.cwd();
@@ -12,10 +47,12 @@ function runCTest(input, block_on_failed) {
   }
 
   const projectDir = path.dirname(cmakeFile);
-  const buildDir = path.join(projectDir, "build");
-  if (!existsSync(buildDir)) {
+  const buildDir = findCMakeBuildDir(projectDir);
+  if (!buildDir) {
     quitHook({ continue: true });
   }
+
+  runCMakeBuild(projectDir, buildDir, block_on_failed);
 
   const result = spawnSync(
     "ctest",

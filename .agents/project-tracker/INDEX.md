@@ -2,7 +2,9 @@
 sources:
   - "README.md"
   - ".agents/plugins/marketplace.json"
+  - "plugins/*/.codex-plugin/plugin.json"
   - "plugins/**/*.json"
+  - "templates/*/.codex-plugin/plugin.json"
   - "templates/**/*.json"
 ---
 

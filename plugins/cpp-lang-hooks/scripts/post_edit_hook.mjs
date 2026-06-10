@@ -5,6 +5,7 @@ import {
   runHook,
   quitHook,
   findUp,
+  findCMakeBuildDir,
 } from "./common/hook.mjs";
 import { markCppChanged } from "./common/turn_state.mjs";
 import path from "node:path";
@@ -46,8 +47,10 @@ function runClangTidy(targetPath) {
   const projectDir = cmakeFile
     ? path.dirname(cmakeFile)
     : path.dirname(targetPath);
-  const buildDir = path.join(projectDir, "build");
-  const tidyArgs = existsSync(path.join(buildDir, "compile_commands.json"))
+  const buildDir = findCMakeBuildDir(projectDir);
+  const hasCompileCommands =
+    buildDir && existsSync(path.join(buildDir, "compile_commands.json"));
+  const tidyArgs = hasCompileCommands
     ? [targetPath, "-p", buildDir]
     : [targetPath];
 
@@ -76,15 +79,13 @@ function runClangTidy(targetPath) {
 function main(input) {
   const cwd = typeof input?.cwd === "string" ? input.cwd : process.cwd();
   const cppPaths = collectHookFilePaths(input)
-    .map((targetPath) => {
-      return path.isAbsolute(targetPath)
+    .map((targetPath) =>
+      path.isAbsolute(targetPath)
         ? path.normalize(targetPath)
-        : path.resolve(cwd, targetPath);
-    })
-    .filter(
-      (targetPath) =>
-        CPP_EXTENSIONS.has(path.extname(targetPath).toLowerCase()) &&
-        existsSync(targetPath),
+        : path.resolve(cwd, targetPath),
+    )
+    .filter((targetPath) =>
+      CPP_EXTENSIONS.has(path.extname(targetPath).toLowerCase()),
     );
 
   if (cppPaths.length > 0) {
@@ -92,8 +93,10 @@ function main(input) {
   }
 
   cppPaths.forEach((targetPath) => {
-    runClangFormat(targetPath);
-    runClangTidy(targetPath);
+    if (existsSync(targetPath)) {
+      runClangFormat(targetPath);
+      runClangTidy(targetPath);
+    }
   });
   quitHook({ continue: true });
 }

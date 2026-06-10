@@ -1,19 +1,25 @@
 {
   "files": {
     "INDEX.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
       "changed_fingerprints": {},
       "matched_paths": [
         ".agents/plugins/marketplace.json",
         "README.md",
+        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
+        "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:55:57Z"
     },
     "api.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3"
+      },
       "matched_paths": [
         "README.md",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -23,29 +29,43 @@
         "plugins/cpp-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     },
     "architecture.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
         "README.md",
+        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
         "plugins/cpp-lang-hooks/scripts/common/hook.mjs",
         "plugins/cpp-lang-hooks/scripts/common/turn_state.mjs",
         "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/cpp-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/scripts/common/hook.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:55:57Z"
     },
     "conventions.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         "README.md",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -58,16 +78,18 @@
         "templates/language-hook-template/scripts/common/hook.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     },
     "data-model.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         "plugins/cpp-lang-hooks/scripts/common/turn_state.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     },
     "deployment.md": {
       "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
@@ -81,8 +103,14 @@
       "updated": "2026-06-09T14:53:39Z"
     },
     "implementation.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
         "plugins/cpp-lang-hooks/scripts/common/hook.mjs",
@@ -94,34 +122,54 @@
         "templates/language-hook-template/scripts/common/hook.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     },
     "progress.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     },
     "stack.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         "README.md",
+        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
         "plugins/cpp-lang-hooks/scripts/common/hook.mjs",
         "plugins/cpp-lang-hooks/scripts/common/turn_state.mjs",
         "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/cpp-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/scripts/common/hook.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:55:57Z"
     },
     "toolchain.md": {
-      "baseline": "58c205ddea95707d130c4d1a27a560a68244ed39",
-      "changed_fingerprints": {},
+      "baseline": "5abdd421b6f5fba01534674d0671365eae35f4d0",
+      "changed_fingerprints": {
+        "plugins/cpp-lang-hooks/scripts/common/hook.mjs": "b279113314e2dc1b0dd92edfbe9cc2f7d52fe2cd05a22ab9b4c8f4c716742799",
+        "plugins/cpp-lang-hooks/scripts/post_edit_hook.mjs": "148d62e567896487fada2712cd345cc3bfebb3e1f1bfa8e67030dc7dad8f81ff",
+        "plugins/cpp-lang-hooks/scripts/stop_hook.mjs": "f7eeedd954aa5e726f05ce4b793fa5b5f1ea59ae8ef94935d8c9236850ca65c3",
+        "templates/language-hook-template/scripts/common/hook.mjs": "26e17bc0d2c5e2f2fc5aafb06a4d37b61360bf225a65638a79526c079e3e6d25",
+        "tests/cpp-lang-hooks/stateful_hooks.test.mjs": "74a1ca3fe827bcb3718a410f6e4e145efa77ab17556921a87e4e0b60060eb9d6"
+      },
       "matched_paths": [
         "README.md",
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -134,7 +182,7 @@
         "templates/language-hook-template/scripts/common/hook.mjs",
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-09T14:53:39Z"
+      "updated": "2026-06-10T01:41:48Z"
     }
   },
   "version": 1

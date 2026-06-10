@@ -2,8 +2,10 @@
 sources:
   - "README.md"
   - "scripts/*.py"
+  - "plugins/*/.codex-plugin/plugin.json"
   - "plugins/**/*.mjs"
   - "plugins/**/*.json"
+  - "templates/*/.codex-plugin/plugin.json"
   - "templates/**/*.mjs"
   - "templates/**/*.json"
   - "tests/**/*.mjs"
@@ -24,7 +26,7 @@ sources:
 
 | Dependency | Version | Purpose |
 |------------|---------|---------|
-| `node:fs`, `node:path`, `node:child_process` | Node built-ins | File inspection, path resolution, and running external C++ tools. |
+| `node:fs`, `node:path`, `node:child_process` | Node built-ins | File/build directory inspection, path resolution, and running external C++ tools. |
 | `node:sqlite` | Node built-in | Persists C++ hook per-turn state without adding npm dependencies. |
 | `node:test`, `node:assert/strict` | Node built-ins | Hook-level regression tests. |
 | Python standard library | Python 3 | Template copying, JSON mutation, argument parsing, and interactive prompting. |
@@ -40,4 +42,4 @@ sources:
 ## Infrastructure & Services
 
 - No external infrastructure, cloud service, or network dependency is declared.
-- Hook execution depends on host-installed tools when available: `node`, `clang-format`, `clang-tidy`, `ctest`, and CMake build directories for C++ projects.
+- Hook execution depends on host-installed tools when available: `node`, `clang-format`, `clang-tidy`, `cmake`, `ctest`, and CMake build directories for C++ projects.

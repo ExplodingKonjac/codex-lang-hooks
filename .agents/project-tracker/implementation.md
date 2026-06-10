@@ -23,15 +23,17 @@ sources:
 
 - `normalize_name()` lowercases plugin names, replaces non-alphanumeric runs with `-`, trims separators, and enforces a 64-character limit.
 - `collectHookFilePaths()` supports ordinary edit tool inputs and parses `apply_patch` headers, including file moves.
-- `runClangTidy()` finds the nearest `CMakeLists.txt`, then prefers `build/compile_commands.json` when present.
+- `collectHookFilePaths()` keeps both source and destination paths for moves, allowing deleted or moved-away C/C++ files to mark a turn as changed.
+- `findCMakeBuildDir()` searches `build/`, `cmake-build-debug/`, `cmake-build-release/`, and `out/build/`, choosing the first directory with CMake marker files.
+- `runClangTidy()` finds the nearest `CMakeLists.txt`, then uses the selected build directory when it contains `compile_commands.json`.
 - `markCppChanged()` upserts `cpp_changed = 1` for a turn in SQLite.
 - `didCppChange()` returns `true` for known C++ changes, `false` for known no-change rows/missing rows, and `null` when state cannot be trusted.
-- `stop_hook.mjs` skips `ctest` only on a definite `false`; missing state falls through to the previous `ctest` behavior.
+- `stop_hook.mjs` skips CMake checks only on a definite `false`; otherwise it runs `cmake --build` before `ctest` when a supported build directory is found.
 
 ## Error Handling Strategy
 
 - Hook scripts emit blocking JSON when a required command fails.
-- Missing `clang-format`, `clang-tidy`, or `ctest` binaries are treated as non-blocking.
+- Missing `clang-format`, `clang-tidy`, `cmake`, or `ctest` binaries are treated as non-blocking.
 - Shared hook errors are logged to `${PLUGIN_DATA}/hook_errors.log` when possible.
 - SQLite failures are swallowed by state helpers and represented as `false` or `null`, so hooks keep developer flow moving.
 - The Python generator raises explicit errors for invalid plugin names, invalid JSON shapes, missing templates, or duplicate target directories.
@@ -40,12 +42,12 @@ sources:
 
 | Test level | Location | What it covers |
 |------------|----------|----------------|
-| Hook integration | `tests/cpp-lang-hooks/stateful_hooks.test.mjs` | Post-edit state marking, stop-hook skip/run decisions, missing `turn_id`, and missing `PLUGIN_DATA`. |
+| Hook integration | `tests/cpp-lang-hooks/stateful_hooks.test.mjs` | Post-edit state marking, deleted/moved C++ paths, build directory selection, stop-hook build/test decisions, missing `turn_id`, and missing `PLUGIN_DATA`. |
 | Manual syntax | N/A | `node --check` for hook scripts and tests. |
 | Generator smoke | N/A | Not currently covered by automated tests. |
 
 ## Performance Considerations
 
-- The stateful stop hook avoids running `ctest` on turns without C/C++ edits.
+- The stateful stop hook avoids running CMake build/test commands on turns without C/C++ edits.
 - SQLite connections are opened per state operation and closed immediately, keeping hook code simple and isolated.
 - Hook file detection filters to known C/C++ extensions before invoking external tooling.

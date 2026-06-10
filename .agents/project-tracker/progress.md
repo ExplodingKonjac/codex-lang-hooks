@@ -12,11 +12,13 @@ Early plugin marketplace and C++ hook stabilization.
 - [x] Implemented C++ stop hook for CMake/`ctest` projects.
 - [x] Added SQLite-backed per-turn C++ change state to avoid redundant `ctest` runs.
 - [x] Added Node hook-level regression tests for C++ stateful behavior.
+- [x] Marked deleted or moved C/C++ paths as test-triggering changes while keeping format/tidy limited to existing files.
+- [x] Added Stop-hook `cmake --build` before `ctest` with fail-open handling for missing `cmake`.
+- [x] Added ordered CMake build directory detection for `build/`, `cmake-build-debug/`, `cmake-build-release/`, and `out/build/`.
 
 ## In Progress
 
 - [ ] Align marketplace entry naming/path with the actual `plugins/cpp-lang-hooks` directory if needed.
-- [ ] Keep project tracker docs synchronized with plugin and test changes.
 
 ## Known Issues & Technical Debt
 

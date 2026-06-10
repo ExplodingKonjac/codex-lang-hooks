@@ -1,8 +1,19 @@
-import { appendFileSync, existsSync, readFileSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 const PATCH_PATH_PATTERN =
   /^\*\*\* (Add|Update|Delete) File: (.+)$|^\*\*\* Move to: (.+)$/;
+const CMAKE_BUILD_DIRS = [
+  "build",
+  "cmake-build-debug",
+  "cmake-build-release",
+  path.join("out", "build"),
+];
+const CMAKE_BUILD_MARKERS = [
+  "CTestTestfile.cmake",
+  "compile_commands.json",
+  "CMakeCache.txt",
+];
 
 export function toolInput(input) {
   return input && typeof input === "object" ? input.tool_input || {} : {};
@@ -35,14 +46,9 @@ export function collectHookFilePaths(input) {
     const [, action, filePath, movedPath] = match;
 
     if (movedPath) {
-      if (updatedFileIndex >= 0) {
-        const previousPath = files[updatedFileIndex];
-        if (previousPath) {
-          seen.delete(previousPath);
-        }
-
-        files[updatedFileIndex] = movedPath;
+      if (updatedFileIndex >= 0 && !seen.has(movedPath)) {
         seen.add(movedPath);
+        files.push(movedPath);
       }
       continue;
     }
@@ -75,6 +81,29 @@ export function findUp(startDir, targetName) {
     }
     currentDir = parentDir;
   }
+}
+
+export function findCMakeBuildDir(projectDir) {
+  for (const buildName of CMAKE_BUILD_DIRS) {
+    const buildDir = path.join(projectDir, buildName);
+    try {
+      if (!statSync(buildDir).isDirectory()) {
+        continue;
+      }
+    } catch {
+      continue;
+    }
+
+    if (
+      CMAKE_BUILD_MARKERS.some((marker) =>
+        existsSync(path.join(buildDir, marker)),
+      )
+    ) {
+      return buildDir;
+    }
+  }
+
+  return null;
 }
 
 export function quitHook(output) {
