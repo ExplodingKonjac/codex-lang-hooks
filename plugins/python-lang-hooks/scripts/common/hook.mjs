@@ -126,6 +126,10 @@ const PYTHON_PROJECT_MARKERS = [
   ".ruff.toml",
 ];
 const VENV_NAMES = [".venv", "venv", ".env", "env"];
+const pythonProjectRootCache = new Map();
+const venvCache = new Map();
+const pathCommandCache = new Map();
+const resolvedCommandCache = new Map();
 
 function commandOutput(result) {
   const stderr = (result.stderr || "").trim();
@@ -196,6 +200,10 @@ function findInDir(binDir, name) {
 }
 
 function findOnPath(name) {
+  if (pathCommandCache.has(name)) {
+    return pathCommandCache.get(name);
+  }
+
   for (const binDir of (process.env.PATH || "").split(path.delimiter)) {
     if (!binDir) {
       continue;
@@ -203,25 +211,34 @@ function findOnPath(name) {
 
     const candidate = findInDir(binDir, name);
     if (candidate) {
+      pathCommandCache.set(name, candidate);
       return candidate;
     }
   }
 
+  pathCommandCache.set(name, null);
   return null;
 }
 
 export function findNearestPythonProjectRoot(startDir) {
-  let currentDir = path.resolve(startDir);
+  const resolvedStartDir = path.resolve(startDir);
+  if (pythonProjectRootCache.has(resolvedStartDir)) {
+    return pythonProjectRootCache.get(resolvedStartDir);
+  }
+
+  let currentDir = resolvedStartDir;
 
   while (true) {
     for (const marker of PYTHON_PROJECT_MARKERS) {
       if (existsSync(path.join(currentDir, marker))) {
+        pythonProjectRootCache.set(resolvedStartDir, currentDir);
         return currentDir;
       }
     }
 
     const parentDir = path.dirname(currentDir);
     if (parentDir === currentDir) {
+      pythonProjectRootCache.set(resolvedStartDir, null);
       return null;
     }
     currentDir = parentDir;
@@ -239,18 +256,25 @@ export function currentPythonProjectRoot(input) {
 }
 
 export function findNearestVenv(startDir) {
-  let currentDir = path.resolve(startDir);
+  const resolvedStartDir = path.resolve(startDir);
+  if (venvCache.has(resolvedStartDir)) {
+    return venvCache.get(resolvedStartDir);
+  }
+
+  let currentDir = resolvedStartDir;
 
   while (true) {
     for (const name of VENV_NAMES) {
       const candidate = path.join(currentDir, name);
       if (existsSync(candidate)) {
+        venvCache.set(resolvedStartDir, candidate);
         return candidate;
       }
     }
 
     const parentDir = path.dirname(currentDir);
     if (parentDir === currentDir) {
+      venvCache.set(resolvedStartDir, null);
       return null;
     }
     currentDir = parentDir;
@@ -267,20 +291,31 @@ function venvEnv(venvDir) {
 }
 
 export function resolveCommand(name, startDir) {
+  const resolvedStartDir = path.resolve(startDir);
+  const cacheKey = `${name}\0${resolvedStartDir}`;
+  if (resolvedCommandCache.has(cacheKey)) {
+    return resolvedCommandCache.get(cacheKey);
+  }
+
   const venvDir = findNearestVenv(startDir);
   if (venvDir) {
     for (const binDir of venvBinDirs(venvDir)) {
       const command = findInDir(binDir, name);
       if (command) {
-        return { command, env: venvEnv(venvDir) };
+        const resolved = { command, env: venvEnv(venvDir) };
+        resolvedCommandCache.set(cacheKey, resolved);
+        return resolved;
       }
     }
   }
 
   if (findOnPath(name)) {
-    return { command: name, env: process.env };
+    const resolved = { command: name, env: process.env };
+    resolvedCommandCache.set(cacheKey, resolved);
+    return resolved;
   }
 
+  resolvedCommandCache.set(cacheKey, null);
   return null;
 }
 
