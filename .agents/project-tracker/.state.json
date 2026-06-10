@@ -1,8 +1,10 @@
 {
   "files": {
     "INDEX.md": {
-      "baseline": "94d91159cf2f799018c82238d1eeb7405afb1724",
-      "changed_fingerprints": {},
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
+      "changed_fingerprints": {
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a"
+      },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
         "README.md",
@@ -13,12 +15,15 @@
         "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-10T07:14:20Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "api.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff"
       },
       "matched_paths": [
         "README.md",
@@ -34,13 +39,16 @@
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "architecture.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -64,13 +72,16 @@
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs",
         "tests/rust-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "conventions.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [
         "README.md",
@@ -90,7 +101,7 @@
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs",
         "tests/rust-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "data-model.md": {
       "baseline": "e79bd5bde659868365895aa82d992f697c4f6ebf",
@@ -104,8 +115,10 @@
       "updated": "2026-06-10T02:59:31Z"
     },
     "deployment.md": {
-      "baseline": "94d91159cf2f799018c82238d1eeb7405afb1724",
-      "changed_fingerprints": {},
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
+      "changed_fingerprints": {
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a"
+      },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
         "README.md",
@@ -113,13 +126,15 @@
         "plugins/rust-lang-hooks/hooks/hooks.json",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-10T07:14:20Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "implementation.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -138,22 +153,28 @@
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs",
         "tests/rust-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "progress.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "stack.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [
         "README.md",
@@ -176,13 +197,16 @@
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs",
         "tests/rust-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     },
     "toolchain.md": {
-      "baseline": "8773ce08f9fdf93425591c61c16332d5014807cc",
+      "baseline": "06e1d0be8f8112d44d0711b558e24ca43952614e",
       "changed_fingerprints": {
-        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "72e27d1a1b19c414579bf5860cab202b3775a8669ccf075d4132a39f8d9e3be9",
-        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "5e2099deb63bc124848a4f5f96f12e16743b52f423c47c3ce764c393abcfea54"
+        "README.md": "a7227886159a767001072c73da42bf325b8d8aaa9a734db897607954488b336a",
+        "plugins/rust-lang-hooks/scripts/common/hook.mjs": "b4911f54e66142454cd82e0f1f499eab9e219983ac5ef858cb9706f2ebd1f61a",
+        "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs": "a54ee60dadbff438458720d8a503ea26f206df2b1100290936e94bc1a573cd1b",
+        "plugins/rust-lang-hooks/scripts/stop_hook.mjs": "80d4708a79d9b66a6689ba80ded2d67a407dc3da5eb481bed945d49a052ca0ff",
+        "tests/rust-lang-hooks/stateful_hooks.test.mjs": "77cb44c72f8755cd8e01a5fbde6953bb648cf6684e0ad112fe78fd771bb81288"
       },
       "matched_paths": [
         "README.md",
@@ -202,7 +226,7 @@
         "tests/cpp-lang-hooks/stateful_hooks.test.mjs",
         "tests/rust-lang-hooks/stateful_hooks.test.mjs"
       ],
-      "updated": "2026-06-10T09:09:15Z"
+      "updated": "2026-06-10T11:58:26Z"
     }
   },
   "version": 1

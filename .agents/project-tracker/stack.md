@@ -45,4 +45,4 @@ sources:
 - No external infrastructure, cloud service, or network dependency is declared.
 - Hook execution depends on host-installed tools when available: `node`, `clang-format`, `clang-tidy`, `cmake`, `ctest`, `cargo`, `rustfmt`, and build/project metadata for the target language.
 - C++ hook behavior is configurable through local `CPP_HOOKS_*` environment variables; no new runtime dependency is introduced for configuration.
-- Rust hook behavior is configurable through local `RUST_HOOKS_*` environment variables; no new runtime dependency is introduced for configuration.
+- Rust hook behavior and failed-command output size are configurable through local `RUST_HOOKS_*` environment variables; no new runtime dependency is introduced for configuration.

@@ -41,6 +41,7 @@ Codex Language Hooks is a repo-local Codex plugin marketplace for language-speci
 - C++ hook checks can be tuned with `CPP_HOOKS_*` environment flags, including a fast mode that keeps formatting while skipping heavier tidy/test checks.
 - Rust hook state is stored under `PLUGIN_DATA` to run Cargo stop checks only for affected Cargo projects.
 - Rust hook checks can be tuned with `RUST_HOOKS_*` environment flags, including standalone-file `rustfmt` support for `.rs` files outside Cargo projects.
+- Rust hook failure messages use shared command-output formatting and trim long tool output with `RUST_HOOKS_OUTPUT_MAX_CHARS`, defaulting to the last 4000 characters.
 
 ## Quick Reference Commands
 

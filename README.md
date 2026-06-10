@@ -57,3 +57,4 @@ Environment controls:
 | `RUST_HOOKS_CARGO_CLIPPY=0` | Skip `cargo clippy` stop checks. |
 | `RUST_HOOKS_CARGO_TEST=0` | Skip `cargo test` stop checks. |
 | `RUST_HOOKS_FAST=1` | Skip all Rust stop checks while keeping formatting. |
+| `RUST_HOOKS_OUTPUT_MAX_CHARS=<n>` | Limit failure output included in Rust hook messages; defaults to the last 4000 characters, with invalid values falling back to that default. |

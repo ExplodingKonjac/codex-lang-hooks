@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import {
   collectHookFilePaths,
+  commandFailureDetails,
   envEnabled,
   findUp,
   quitHook,
@@ -25,14 +26,6 @@ function cargoProjectDir(targetPath) {
   return cargoToml ? path.dirname(cargoToml) : null;
 }
 
-function commandDetails(result) {
-  return (
-    result.error?.message ||
-    (result.stderr || result.stdout).trim() ||
-    `exit ${result.status}`
-  );
-}
-
 function pushUnique(items, item) {
   if (!items.includes(item)) {
     items.push(item);
@@ -53,7 +46,7 @@ function runCargoFmt(projectDir) {
   if (result.error || result.status !== 0) {
     quitHook({
       decision: "block",
-      reason: `cargo fmt in ${projectDir} failed: ${commandDetails(result)}`,
+      reason: `cargo fmt in ${projectDir} failed: ${commandFailureDetails(result)}`,
     });
   }
 }
@@ -71,7 +64,7 @@ function runRustfmt(targetPath) {
   if (result.error || result.status !== 0) {
     quitHook({
       decision: "block",
-      reason: `rustfmt on ${targetPath} failed: ${commandDetails(result)}`,
+      reason: `rustfmt on ${targetPath} failed: ${commandFailureDetails(result)}`,
     });
   }
 }

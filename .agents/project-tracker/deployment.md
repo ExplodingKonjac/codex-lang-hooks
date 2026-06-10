@@ -40,7 +40,7 @@ Plugins are stored as local source directories under `plugins/` and referenced b
 
 ## Monitoring & Alerts
 
-N/A — no deployed service or runtime monitoring exists. Hook runtime errors are written to `${PLUGIN_DATA}/hook_errors.log` when available, and local `CPP_HOOKS_*` / `RUST_HOOKS_*` flags can reduce hook work in latency-sensitive environments.
+N/A — no deployed service or runtime monitoring exists. Hook runtime errors are written to `${PLUGIN_DATA}/hook_errors.log` when available, local `CPP_HOOKS_*` / `RUST_HOOKS_*` flags can reduce hook work in latency-sensitive environments, and `RUST_HOOKS_OUTPUT_MAX_CHARS` bounds failed Rust tool output included in hook messages.
 
 ## Rollback Procedure
 

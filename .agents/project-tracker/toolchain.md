@@ -76,3 +76,4 @@ No `.github/workflows/`, Dockerfile, or deployment pipeline files are present. V
 | `RUST_HOOKS_CARGO_CLIPPY=0` | Skip `cargo clippy -- -D warnings`. |
 | `RUST_HOOKS_CARGO_TEST=0` | Skip `cargo test`. |
 | `RUST_HOOKS_FAST=1` | Skip Rust Stop-hook Cargo checks while keeping formatting. |
+| `RUST_HOOKS_OUTPUT_MAX_CHARS=<n>` | Limit failed Rust tool output in hook responses to the last `<n>` characters; invalid values fall back to 4000. |

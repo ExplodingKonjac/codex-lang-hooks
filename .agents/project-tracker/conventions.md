@@ -33,6 +33,7 @@ sources:
 | Python functions | snake_case. | `normalize_name`, `update_marketplace` |
 | Constants | UPPER_SNAKE_CASE in Python; Pascal/upper-style consts in JS where existing. | `TEMPLATE_DIR`, `CPP_EXTENSIONS` |
 | Hook env flags | Prefix language hook controls by language; use `"0"` for default-on disable flags and `"1"` for opt-in enable flags. | `CPP_HOOKS_FAST`, `CPP_HOOKS_TIDY_HEADERS`, `RUST_HOOKS_FAST` |
+| Hook numeric env flags | Parse positive integers with a default fallback for bounds such as output limits. | `RUST_HOOKS_OUTPUT_MAX_CHARS` |
 
 ## Architectural Rules
 
@@ -65,6 +66,7 @@ sources:
 ## Error Handling
 
 - Hook scripts should block only when a required tool invocation fails; missing optional language tools are skipped.
+- Failed Rust command messages should use the shared failure formatter so stderr/stdout labeling, exit-status fallback, and output trimming stay consistent across post-edit and Stop hooks.
 - `runHook()` catches unhandled hook errors, writes `hook_errors.log` under `PLUGIN_DATA` when available, and exits non-zero.
 - SQLite state helpers return booleans/null instead of throwing so hook execution can fail open.
 - Python generator errors are explicit exceptions or `SystemExit` with readable messages.
@@ -75,6 +77,7 @@ sources:
 - Tests should create temp project fixtures and fake external tools instead of requiring system language tooling.
 - Test names should describe the behavior being protected.
 - State-related tests should include fail-open scenarios for missing `turn_id` or `PLUGIN_DATA`.
+- Failure-output tests should cover long output trimming, invalid output-limit fallback, both-stream labeling, retry-mode system messages, and empty-output exit-status fallback.
 
 ## Documentation Conventions
 

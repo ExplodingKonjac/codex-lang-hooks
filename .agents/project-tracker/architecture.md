@@ -71,8 +71,10 @@ For Rust:
 2. `collectHookFilePaths(input, cwd)` extracts normalized, deduplicated edited paths from `tool_input` or `apply_patch` content.
 3. Any mentioned `.rs` path records the turn as Rust-changed for `input.turn_id`; paths under Cargo projects also record the nearest `Cargo.toml` directory.
 4. Existing Rust files under Cargo projects are formatted once per affected project with `cargo fmt`; standalone existing `.rs` files are formatted with `rustfmt`.
-5. A Codex `Stop` event invokes the Rust stop hook.
-6. The stop hook skips when disabled by env flags, when there are no Rust changes, or when the turn only touched standalone Rust files; otherwise it runs `cargo check`, `cargo clippy -- -D warnings`, and `cargo test` in each affected Cargo project.
+5. Failed Rust formatting commands report shared command failure details, including labeled `stderr`/`stdout` when both streams exist and tail trimming controlled by `RUST_HOOKS_OUTPUT_MAX_CHARS`.
+6. A Codex `Stop` event invokes the Rust stop hook.
+7. Failed Rust Stop-hook Cargo commands use the same command failure detail formatter in either blocking responses or retry-mode system messages.
+8. The stop hook skips when disabled by env flags, when there are no Rust changes, or when the turn only touched standalone Rust files; otherwise it runs `cargo check`, `cargo clippy -- -D warnings`, and `cargo test` in each affected Cargo project.
 
 ## Design Patterns
 
@@ -86,5 +88,5 @@ For Rust:
 
 - Hook scripts execute local commands (`clang-format`, `clang-tidy`, `cmake`, `ctest`, `cargo`, `rustfmt`) against repository files, so they should keep arguments structured and avoid shell interpolation.
 - Plugin state is stored only under `PLUGIN_DATA`; repository files are not used for runtime hook state.
-- Environment flags only enable or disable local checks; they do not alter command arguments beyond selecting which checks run.
+- Environment flags primarily enable or disable local checks; Rust also exposes `RUST_HOOKS_OUTPUT_MAX_CHARS` to bound failed command output included in hook messages.
 - The generator writes to `plugins/` and `.agents/plugins/marketplace.json`; it validates plugin names and JSON object shapes before writing.

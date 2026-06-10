@@ -26,11 +26,13 @@ Early plugin marketplace with C++ and Rust hook stabilization.
 - [x] Added `RUST_HOOKS_*` environment flags for Cargo formatting, standalone rustfmt, Cargo Stop checks, and fast-mode behavior.
 - [x] Added Node hook-level regression tests for Rust stateful behavior.
 - [x] Moved hook path normalization and deduplication into shared `collectHookFilePaths(input, cwd)` helpers across C++, Rust, and the template.
+- [x] Added shared Rust command failure formatting with stdout/stderr labeling, exit-status fallback, and configurable tail trimming via `RUST_HOOKS_OUTPUT_MAX_CHARS`.
+- [x] Added Rust hook regression tests for trimmed failure output, invalid output-limit fallback, both-stream output, retry-mode messages, and empty-output failures.
 
 ## In Progress
 
 - [ ] Align marketplace entry naming/path with the actual `plugins/cpp-lang-hooks` directory if needed.
-- [ ] Decide whether Rust hook state should be documented in `data-model.md` if that tracker file's source boundary is expanded later.
+- [ ] Decide whether Rust hook state and failure-output controls should be documented in `data-model.md` if that tracker file's source boundary is expanded later.
 
 ## Known Issues & Technical Debt
 

@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import {
+  commandFailureDetails,
   envEnabled,
   envFlag,
   findUp,
@@ -31,19 +32,16 @@ function runCargoCommand(command, projectDir, blockOnFailed) {
   }
 
   if (result.error || result.status !== 0) {
-    const details =
-      result.error?.message ||
-      (result.stderr || result.stdout).trim() ||
-      `exit ${result.status}`;
+    const details = commandFailureDetails(result);
     if (blockOnFailed) {
       quitHook({
         decision: "block",
-        reason: `cargo ${command} in ${projectDir} failed: ${details}`,
+        reason: `cargo ${command.join(" ")} in ${projectDir} failed: ${details}`,
       });
     } else {
       quitHook({
         continue: true,
-        systemMessage: `cargo ${command} in ${projectDir} still failed: ${details}`,
+        systemMessage: `cargo ${command.join(" ")} in ${projectDir} still failed: ${details}`,
       });
     }
   }
