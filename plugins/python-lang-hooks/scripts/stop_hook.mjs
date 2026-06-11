@@ -82,7 +82,7 @@ function enabledCommands(projectRoot) {
   return commands;
 }
 
-function runPythonCommand(command, projectRoot, blockOnFailed) {
+function runPythonCommand(command, projectRoot) {
   const result = spawnSync(command.command, command.args, {
     cwd: projectRoot,
     encoding: "utf8",
@@ -91,23 +91,20 @@ function runPythonCommand(command, projectRoot, blockOnFailed) {
   });
 
   if (result.error?.code === "ENOENT") {
-    return;
+    return null;
   }
 
   if (result.error || result.status !== 0) {
     const details = commandFailureDetails(result);
-    if (blockOnFailed) {
-      quitHook({
-        decision: "block",
-        reason: `${command.name} in ${projectRoot} failed: ${details}`,
-      });
-    } else {
-      quitHook({
-        continue: true,
-        systemMessage: `${command.name} in ${projectRoot} still failed: ${details}`,
-      });
-    }
+    return { commandName: command.name, projectRoot, details };
   }
+
+  return null;
+}
+
+function commandFailedMessage(failure, { retry }) {
+  const status = retry ? "still failed" : "failed";
+  return `${failure.commandName} in ${failure.projectRoot} ${status}: ${failure.details}`;
 }
 
 function projectRootsToCheck(input) {
@@ -133,11 +130,33 @@ function main(input) {
     quitHook({ continue: true });
   }
 
-  const blockOnFailed = input.stop_hook_active ? false : true;
+  const retryMode = input.stop_hook_active === true;
+  const failures = [];
   for (const projectRoot of projectRoots) {
     for (const command of enabledCommands(projectRoot)) {
-      runPythonCommand(command, projectRoot, blockOnFailed);
+      const failure = runPythonCommand(command, projectRoot);
+      if (!failure) {
+        continue;
+      }
+
+      if (!retryMode) {
+        quitHook({
+          decision: "block",
+          reason: commandFailedMessage(failure, { retry: false }),
+        });
+      }
+
+      failures.push(failure);
     }
+  }
+
+  if (failures.length > 0) {
+    quitHook({
+      continue: true,
+      systemMessage: failures
+        .map((failure) => commandFailedMessage(failure, { retry: true }))
+        .join("\n\n"),
+    });
   }
 
   quitHook({ continue: true });
