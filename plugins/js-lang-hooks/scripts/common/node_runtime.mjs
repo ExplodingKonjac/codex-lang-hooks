@@ -314,10 +314,21 @@ export function resolvePackageScript(scriptName, projectRoot) {
     return null;
   }
 
+  const commandSpec =
+    manager === "yarn"
+      ? {
+          name: `yarn ${scriptName}`,
+          args: [scriptName],
+        }
+      : {
+          name: `${manager} run ${scriptName}`,
+          args: ["run", scriptName],
+        };
+
   return {
     ...resolved,
-    name: `${manager} run ${scriptName}`,
-    args: ["run", scriptName],
+    name: commandSpec.name,
+    args: commandSpec.args,
   };
 }
 

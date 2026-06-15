@@ -24,11 +24,9 @@
       "updated": "2026-06-13T14:39:49Z"
     },
     "api.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222"
       },
       "matched_paths": [
         "README.md",
@@ -60,17 +58,14 @@
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "architecture.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -137,17 +132,14 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "conventions.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [
         "README.md",
@@ -208,7 +200,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "data-model.md": {
       "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
@@ -239,14 +231,11 @@
       "updated": "2026-06-13T14:39:49Z"
     },
     "implementation.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -306,30 +295,24 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "progress.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "stack.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [
         "README.md",
@@ -395,17 +378,14 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     },
     "toolchain.md": {
-      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
+      "baseline": "0e08c1837ce417704df786aefb65faf1e9bda4b9",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
-        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
+        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "722d4590ae4dc1e1c5559b3a3a12ff8bd4b80f8db679e843d79c29cf4e7a9222",
+        "tests/js-lang-hooks/node_runtime.test.mjs": "0ca195ee5cdfd8d5e1ebf7adfc83acf19f86345faa1828f5838035eb72056983",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "7e40a566fccf6e0ba71fa2b8c386ef2584018140f621a4116f28f7c972e9bde0"
       },
       "matched_paths": [
         "README.md",
@@ -466,7 +446,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-15T01:14:20Z"
+      "updated": "2026-06-15T01:26:37Z"
     }
   },
   "version": 1

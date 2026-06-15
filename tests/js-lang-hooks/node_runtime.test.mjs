@@ -92,3 +92,41 @@ test("package manager, scripts, and TypeScript config are detected from package.
     process.env.PATH = previousPath;
   }
 });
+
+test("resolvePackageScript uses manager-specific invocation semantics for yarn and bun", () => {
+  const fixture = makeFixture();
+  writePackageJson(fixture.projectDir, {
+    name: "project",
+    version: "0.1.0",
+    packageManager: "yarn@4.0.0",
+    scripts: {
+      lint: "eslint .",
+    },
+  });
+  writePackageJson(fixture.nestedProjectDir, {
+    name: "nested",
+    version: "0.1.0",
+    scripts: {
+      test: "vitest run",
+    },
+  });
+  writeFileSync(path.join(fixture.nestedProjectDir, "bun.lock"), "");
+  writeToolLogger(fixture.binDir, "yarn", path.join(fixture.dir, "yarn.log"));
+  writeToolLogger(fixture.binDir, "bun", path.join(fixture.dir, "bun.log"));
+
+  const previousPath = process.env.PATH;
+  process.env.PATH = fixture.binDir;
+  try {
+    const yarnResolved = resolvePackageScript("lint", fixture.projectDir);
+    assert.ok(yarnResolved);
+    assert.equal(yarnResolved.name, "yarn lint");
+    assert.deepEqual(yarnResolved.args, ["lint"]);
+
+    const bunResolved = resolvePackageScript("test", fixture.nestedProjectDir);
+    assert.ok(bunResolved);
+    assert.equal(bunResolved.name, "bun run test");
+    assert.deepEqual(bunResolved.args, ["run", "test"]);
+  } finally {
+    process.env.PATH = previousPath;
+  }
+});

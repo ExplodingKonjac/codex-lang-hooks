@@ -67,6 +67,73 @@ test("Stop runs package scripts before direct tool fallbacks for touched project
   ]);
 });
 
+test("Stop uses manager-specific package-script invocation for yarn and bun projects", () => {
+  const fixture = makeFixture();
+  const logPath = path.join(fixture.dir, "manager-specific.log");
+  writePackageJson(fixture.projectDir, {
+    name: "project",
+    version: "0.1.0",
+    packageManager: "yarn@4.0.0",
+    scripts: {
+      lint: "eslint .",
+    },
+  });
+  writePackageJson(fixture.nestedProjectDir, {
+    name: "nested",
+    version: "0.1.0",
+    scripts: {
+      test: "vitest run",
+    },
+  });
+  writeFileSync(path.join(fixture.nestedProjectDir, "bun.lock"), "");
+  writeToolLogger(fixture.binDir, "yarn", logPath);
+  writeToolLogger(fixture.binDir, "bun", logPath);
+
+  const postResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.dir,
+      turn_id: "turn-manager-specific",
+      tool_name: "apply_patch",
+      tool_input: {
+        command: [
+          "*** Begin Patch",
+          "*** Update File: project/src/index.js",
+          "*** Update File: nested/src/nested.ts",
+          "*** End Patch",
+        ].join("\n"),
+      },
+    },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+        JS_HOOKS_FORMAT: "0",
+        JS_HOOKS_TYPECHECK: "0",
+      },
+    },
+  );
+  assert.equal(postResult.status, 0, postResult.stderr);
+
+  const result = runHook(
+    STOP_HOOK,
+    { cwd: fixture.dir, turn_id: "turn-manager-specific" },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+        JS_HOOKS_TYPECHECK: "0",
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(readLines(logPath), [
+    `bun:${fixture.nestedProjectDir}:run test`,
+    `yarn:${fixture.projectDir}:lint`,
+  ]);
+});
+
 test("Stop uses tsc only for TypeScript roots and direct lint/test fallbacks otherwise", () => {
   const fixture = makeFixture();
   const logPath = path.join(fixture.dir, "fallback.log");

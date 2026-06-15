@@ -46,6 +46,7 @@ sources:
 - Rust Stop-hook Clippy checks should deny warnings with `cargo clippy -- -D warnings` when enabled.
 - Python hooks should resolve tools through the nearest virtualenv before falling back to global `PATH`, without shell-sourcing activation scripts.
 - JavaScript/TypeScript hooks should resolve tools through the nearest `node_modules/.bin` before falling back to global `PATH`, and should prefer package scripts over direct Stop-hook tool fallbacks when a script exists.
+- JavaScript/TypeScript package-script execution should use manager-specific invocation forms instead of assuming every package manager uses the same script syntax.
 - Template files should remain generic; language-specific behavior belongs under `plugins/<plugin-name>/`.
 - **Forbidden**: overwriting existing plugin directories in the generator.
 

@@ -40,7 +40,7 @@ There is no compile or bundle step for the repository itself.
 | `biome format` / `biome check` | JavaScript/TypeScript project config if present | JS/TS formatter fallback and linter fallback when `prettier` or `eslint` are unavailable. |
 | `eslint` | JavaScript/TypeScript project config if present | JS/TS Stop hook lint fallback when no package `lint` script exists; runs on touched code files instead of `.`. |
 | `tsc --noEmit` | TypeScript project config if present | JS/TS Stop hook typecheck fallback when no package `typecheck` script exists. |
-| JS/TS package scripts | `package.json` scripts and local package manager | JS/TS Stop hook prefers `typecheck`, `lint`, and `test` scripts over direct tool fallbacks, blocks when a discovered `package.json` is malformed, and still allows script-based lint on config-only turns. |
+| JS/TS package scripts | `package.json` scripts and local package manager | JS/TS Stop hook prefers `typecheck`, `lint`, and `test` scripts over direct tool fallbacks, uses manager-specific invocation forms (`npm run`, `pnpm run`, `yarn <script>`, `bun run`), blocks when a discovered `package.json` is malformed, and still allows script-based lint on config-only turns. |
 | JS/TS test runners | Tool-specific config if present | JS/TS Stop hook falls back to `vitest run`, `jest --runInBand`, then `node --test`. |
 
 No repository-level JavaScript or Python formatter config is present.
