@@ -9,6 +9,7 @@ import {
   readProjectRoots,
   runHook,
   writeToolLogger,
+  writeFileSync,
 } from "./helpers.mjs";
 
 test("post-edit TypeScript file marks the turn and records the project root", () => {
@@ -62,6 +63,62 @@ test("post-edit config-only edits mark the project root without running a format
     fixture.projectDir,
   ]);
   assert.deepEqual(readLines(logPath), []);
+});
+
+test("post-edit richer JS tool configs mark the project root without running a formatter", () => {
+  const fixture = makeFixture();
+  const logPath = path.join(fixture.dir, "richer-config.log");
+  writeToolLogger(fixture.binDir, "prettier", logPath);
+  writeFileSync(path.join(fixture.projectDir, "vite.config.ts"), "export default {};\n");
+  writeFileSync(path.join(fixture.projectDir, ".babelrc.json"), "{\n  \"presets\": []\n}\n");
+
+  const viteResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-vite-config",
+      tool_name: "Edit",
+      tool_input: { file_path: "vite.config.ts" },
+    },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+  assert.equal(viteResult.status, 0, viteResult.stderr);
+  assert.equal(readJsChanged(fixture.pluginData, "turn-vite-config"), 1);
+  assert.deepEqual(readProjectRoots(fixture.pluginData, "turn-vite-config"), [
+    fixture.projectDir,
+  ]);
+  assert.deepEqual(readLines(logPath), [
+    `prettier:${fixture.projectDir}:--write ${path.join(fixture.projectDir, "vite.config.ts")}`,
+  ]);
+
+  const babelResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-babel-config",
+      tool_name: "Edit",
+      tool_input: { file_path: ".babelrc.json" },
+    },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+      },
+    },
+  );
+  assert.equal(babelResult.status, 0, babelResult.stderr);
+  assert.equal(readJsChanged(fixture.pluginData, "turn-babel-config"), 1);
+  assert.deepEqual(readProjectRoots(fixture.pluginData, "turn-babel-config"), [
+    fixture.projectDir,
+  ]);
+  assert.deepEqual(readLines(logPath), [
+    `prettier:${fixture.projectDir}:--write ${path.join(fixture.projectDir, "vite.config.ts")}`,
+  ]);
 });
 
 test("post-edit unrelated files do not mark the turn", () => {

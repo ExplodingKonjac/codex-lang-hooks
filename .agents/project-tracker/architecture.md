@@ -104,8 +104,8 @@ For JavaScript/TypeScript:
 
 1. A Codex edit tool triggers the JS/TS plugin `PostToolUse` hook.
 2. `collectHookFilePaths(input, cwd)` extracts normalized, deduplicated edited paths from `tool_input` or `apply_patch` content.
-3. Any mentioned JS/TS code file or tracked JS/TS config path records the turn as JS-changed for `input.turn_id`; paths under a discovered project root also record that root.
-4. Existing JS/TS code files are formatted per format root with `prettier --write` first, then `biome format --write` when `prettier` is unavailable, and those existing code files are also recorded for later Stop-hook lint-on-files behavior.
+3. Any mentioned JS/TS code file or tracked JS/TS config path records the turn as JS-changed for `input.turn_id`; tracked config coverage includes common tool configs such as Vite, Rollup, Webpack, tsup, Babel, ESLint, Prettier, Vitest, and Jest; paths under a discovered project root also record that root.
+4. Existing JS/TS code files are formatted per format root with `prettier --write` first, then `biome format --write` when `prettier` is unavailable, and those existing code files are also recorded for later Stop-hook lint-on-files behavior. Config files written in JS/TS, such as `vite.config.ts`, still participate in normal formatting because they are code files.
 5. JS/TS runtime discovery prefers executables from the nearest `node_modules/.bin`, inspects `package.json` scripts for `typecheck`, `lint`, and `test`, detects the package manager from `packageManager` or lockfiles, builds manager-specific script invocations, preserves malformed `package.json` parse errors for the stop hook, and validates root `tsconfig*.json` / `jsconfig.json` with JSONC-style parsing.
 6. A Codex `Stop` event invokes the JS/TS stop hook.
 7. The stop hook skips when fast mode disables Stop checks, when there are no JS/TS changes, or when the turn touched only standalone JS files with no discoverable project root.

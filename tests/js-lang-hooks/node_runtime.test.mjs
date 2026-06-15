@@ -39,6 +39,19 @@ test("project root discovery finds the nearest package boundary", () => {
   );
 });
 
+test("project root discovery also works from richer tool config markers", () => {
+  const fixture = makeFixture();
+  const configRoot = fixture.standaloneDir;
+  writeFileSync(path.join(configRoot, "vite.config.ts"), "export default {};\n");
+  writeFileSync(path.join(configRoot, ".babelrc"), "{\n  \"plugins\": []\n}\n");
+
+  assert.equal(findNearestNodeProjectRoot(configRoot), configRoot);
+  assert.equal(
+    currentNodeProjectRoot({ cwd: configRoot }),
+    configRoot,
+  );
+});
+
 test("resolveCommand prefers local node_modules bin and memoizes by start directory", () => {
   const fixture = makeFixture();
   const toolName = "fixture-node-local-tool";

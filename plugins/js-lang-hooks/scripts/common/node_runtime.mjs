@@ -7,6 +7,26 @@ const PROJECT_MARKERS = [
   "jsconfig.json",
   "biome.json",
   "biome.jsonc",
+  "vite.config.js",
+  "vite.config.mjs",
+  "vite.config.cjs",
+  "vite.config.ts",
+  "rollup.config.js",
+  "rollup.config.mjs",
+  "rollup.config.cjs",
+  "rollup.config.ts",
+  "webpack.config.js",
+  "webpack.config.mjs",
+  "webpack.config.cjs",
+  "webpack.config.ts",
+  "tsup.config.js",
+  "tsup.config.mjs",
+  "tsup.config.cjs",
+  "tsup.config.ts",
+  "babel.config.js",
+  "babel.config.mjs",
+  "babel.config.cjs",
+  "babel.config.ts",
   "eslint.config.js",
   "eslint.config.mjs",
   "eslint.config.cjs",
@@ -183,6 +203,7 @@ function hasProjectMarker(dir) {
         entry === "tsconfig.json" ||
         entry === "jsconfig.json" ||
         entry.startsWith("tsconfig.") ||
+        entry.startsWith(".babelrc") ||
         entry.startsWith(".eslintrc") ||
         entry.startsWith(".prettierrc"),
     );

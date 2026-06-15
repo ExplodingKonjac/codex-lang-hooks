@@ -53,6 +53,7 @@ Early plugin marketplace with C++, Rust, Python, and JavaScript/TypeScript hook 
 - [x] Extended JavaScript/TypeScript turn state to persist touched existing code files for file-scoped Stop linting.
 - [x] Added manager-specific JavaScript/TypeScript package-script invocation semantics for `npm`, `pnpm`, `yarn`, and `bun`.
 - [x] Added JSONC-aware malformed `tsconfig*.json` and `jsconfig.json` blocking behavior for JavaScript/TypeScript Stop hooks.
+- [x] Expanded JavaScript/TypeScript config detection to cover richer build-tool config files such as Vite, Rollup, Webpack, tsup, and Babel.
 - [x] Added Node hook-level regression tests for JavaScript/TypeScript formatting, stateful Stop behavior, local-bin resolution, package-manager/script detection, standalone-file skip behavior, and failure-output handling.
 - [x] Extracted shared helper modules for C++ CMake build-dir discovery, Rust/Python failure-output formatting, and Python runtime/tool resolution.
 - [x] Reorganized the C++, Rust, Python, and JavaScript/TypeScript hook tests into focused `*.test.mjs` files with per-language aggregators and shared runtime/SQLite helpers.

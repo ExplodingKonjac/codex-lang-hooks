@@ -36,7 +36,7 @@ There is no compile or bundle step for the repository itself.
 | Python type checkers | Tool-specific config if present | Python Stop hook selects the first available of `ty`, `pyre`, `pyright`, then `mypy`. |
 | Python linters | Tool-specific config if present | Python Stop hook selects the first available of `ruff check` then `pylint`. |
 | Python test runners | Project test config if present | Python Stop hook runs `pytest` when available, otherwise `python -m unittest discover`. |
-| `prettier` | JavaScript/TypeScript project config if present | Preferred JS/TS post-edit formatter for existing code files when available. |
+| `prettier` | JavaScript/TypeScript project config if present | Preferred JS/TS post-edit formatter for existing code files when available, including config files written as JS/TS such as `vite.config.ts`. |
 | `biome format` / `biome check` | JavaScript/TypeScript project config if present | JS/TS formatter fallback and linter fallback when `prettier` or `eslint` are unavailable. |
 | `eslint` | JavaScript/TypeScript project config if present | JS/TS Stop hook lint fallback when no package `lint` script exists; runs on touched code files instead of `.`. |
 | `tsc --noEmit` | TypeScript project config if present | JS/TS Stop hook typecheck fallback when no package `typecheck` script exists; root `tsconfig*.json` / `jsconfig.json` is validated first with JSONC-aware parsing. |
