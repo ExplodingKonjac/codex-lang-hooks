@@ -5,10 +5,46 @@
   },
   "plugins": [
     {
-      "name": "cpp-lang-hook",
+      "name": "cpp-lang-hooks",
       "source": {
         "source": "local",
-        "path": "./plugins/cpp-lang-hook"
+        "path": "./plugins/cpp-lang-hooks"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "rust-lang-hooks",
+      "source": {
+        "source": "local",
+        "path": "./plugins/rust-lang-hooks"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "python-lang-hooks",
+      "source": {
+        "source": "local",
+        "path": "./plugins/python-lang-hooks"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "js-lang-hooks",
+      "source": {
+        "source": "local",
+        "path": "./plugins/js-lang-hooks"
       },
       "policy": {
         "installation": "AVAILABLE",
