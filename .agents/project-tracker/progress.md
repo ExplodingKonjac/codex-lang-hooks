@@ -49,6 +49,8 @@ Early plugin marketplace with C++, Rust, Python, and JavaScript/TypeScript hook 
 - [x] Added per-process JavaScript/TypeScript helper caches for project root, package manager, scripts, local bin directories, PATH, and command resolution.
 - [x] Added JavaScript/TypeScript retry-mode Stop aggregation so multiple failures are reported in one `systemMessage`.
 - [x] Blocked JavaScript/TypeScript Stop hooks on malformed discovered `package.json` files instead of silently skipping package-script-based checks.
+- [x] Added JavaScript/TypeScript lint-on-files optimization so direct-tool Stop lint runs on touched code files instead of `.`.
+- [x] Extended JavaScript/TypeScript turn state to persist touched existing code files for file-scoped Stop linting.
 - [x] Added Node hook-level regression tests for JavaScript/TypeScript formatting, stateful Stop behavior, local-bin resolution, package-manager/script detection, standalone-file skip behavior, and failure-output handling.
 - [x] Extracted shared helper modules for C++ CMake build-dir discovery, Rust/Python failure-output formatting, and Python runtime/tool resolution.
 - [x] Reorganized the C++, Rust, Python, and JavaScript/TypeScript hook tests into focused `*.test.mjs` files with per-language aggregators and shared runtime/SQLite helpers.

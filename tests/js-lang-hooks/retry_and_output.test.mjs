@@ -50,7 +50,10 @@ test("failed Stop command blocks normally and reports systemMessage in retry mod
     },
   );
   assert.equal(blockResult.status, 0, blockResult.stderr);
-  assert.match(hookOutput(blockResult).reason, /eslint \..*failed: lint error/);
+  assert.match(
+    hookOutput(blockResult).reason,
+    /eslint .*src\/index\.js.*failed: lint error/,
+  );
 
   const retryResult = runHook(
     STOP_HOOK,
@@ -65,7 +68,10 @@ test("failed Stop command blocks normally and reports systemMessage in retry mod
     },
   );
   assert.equal(retryResult.status, 0, retryResult.stderr);
-  assert.match(hookOutput(retryResult).systemMessage, /eslint \..*still failed: lint error/);
+  assert.match(
+    hookOutput(retryResult).systemMessage,
+    /eslint .*src\/index\.js.*still failed: lint error/,
+  );
 });
 
 test("retry Stop aggregates failures across projects and commands", () => {
@@ -114,9 +120,9 @@ test("retry Stop aggregates failures across projects and commands", () => {
   assert.equal(result.status, 0, result.stderr);
   const messages = hookOutput(result).systemMessage.split("\n\n");
   assert.equal(messages.length, 4);
-  assert.match(messages[0], /eslint \..*nested.*still failed: lint error/);
+  assert.match(messages[0], /eslint .*nested\/src\/nested\.ts.*still failed: lint error/);
   assert.match(messages[1], /vitest run.*nested.*still failed: test error/);
-  assert.match(messages[2], /eslint \..*project.*still failed: lint error/);
+  assert.match(messages[2], /eslint .*project\/src\/index\.js.*still failed: lint error/);
   assert.match(messages[3], /vitest run.*project.*still failed: test error/);
 });
 

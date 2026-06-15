@@ -5,6 +5,7 @@ import {
   makeFixture,
   path,
   POST_EDIT_HOOK,
+  readLintFiles,
   readLines,
   runHook,
   STOP_HOOK,
@@ -112,11 +113,15 @@ test("Stop uses tsc only for TypeScript roots and direct lint/test fallbacks oth
 
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(readLines(logPath), [
-    `eslint:${fixture.nestedProjectDir}:.`,
+    `eslint:${fixture.nestedProjectDir}:${path.join(fixture.nestedProjectDir, "src/nested.ts")}`,
     `vitest:${fixture.nestedProjectDir}:run`,
     `tsc:${fixture.projectDir}:--noEmit`,
-    `eslint:${fixture.projectDir}:.`,
+    `eslint:${fixture.projectDir}:${path.join(fixture.projectDir, "src/index.ts")}`,
     `vitest:${fixture.projectDir}:run`,
+  ]);
+  assert.deepEqual(readLintFiles(fixture.pluginData, "turn-fallbacks"), [
+    path.join(fixture.nestedProjectDir, "src/nested.ts"),
+    path.join(fixture.projectDir, "src/index.ts"),
   ]);
 });
 
@@ -185,9 +190,50 @@ test("missing PLUGIN_DATA fails open to the current Node project root", () => {
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(readLines(logPath), [
     `tsc:${fixture.projectDir}:--noEmit`,
-    `eslint:${fixture.projectDir}:.`,
     `vitest:${fixture.projectDir}:run`,
   ]);
+});
+
+test("config-only turns skip direct-tool lint fallback when no package lint script exists", () => {
+  const fixture = makeFixture();
+  const logPath = path.join(fixture.dir, "config-only.log");
+  writeToolLogger(fixture.binDir, "eslint", logPath);
+  writeToolLogger(fixture.binDir, "vitest", logPath);
+
+  const postResult = runHook(
+    POST_EDIT_HOOK,
+    {
+      cwd: fixture.projectDir,
+      turn_id: "turn-config-only",
+      tool_name: "Edit",
+      tool_input: { file_path: "package.json" },
+    },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+        JS_HOOKS_FORMAT: "0",
+        JS_HOOKS_TYPECHECK: "0",
+      },
+    },
+  );
+  assert.equal(postResult.status, 0, postResult.stderr);
+
+  const result = runHook(
+    STOP_HOOK,
+    { cwd: fixture.projectDir, turn_id: "turn-config-only" },
+    {
+      env: {
+        PLUGIN_DATA: fixture.pluginData,
+        PATH: fixture.binDir,
+        JS_HOOKS_TYPECHECK: "0",
+      },
+    },
+  );
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(readLines(logPath), [`vitest:${fixture.projectDir}:run`]);
+  assert.deepEqual(readLintFiles(fixture.pluginData, "turn-config-only"), []);
 });
 
 test("standalone-only turns skip Stop checks", () => {

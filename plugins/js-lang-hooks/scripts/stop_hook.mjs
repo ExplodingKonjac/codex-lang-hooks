@@ -52,16 +52,20 @@ function typecheckCommand(projectRoot) {
   };
 }
 
-function lintCommand(projectRoot) {
+function lintCommand(projectRoot, lintFiles, { allowDirectToolFallback }) {
   const packageScript = resolvePackageScript("lint", projectRoot);
   if (packageScript) {
     return packageScript;
   }
 
+  if (!allowDirectToolFallback || lintFiles.length === 0) {
+    return null;
+  }
+
   return commandForCandidates(
     [
-      ["eslint", ["."], "eslint ."],
-      ["biome", ["check", "."], "biome check ."],
+      ["eslint", lintFiles, `eslint ${lintFiles.join(" ")}`],
+      ["biome", ["check", ...lintFiles], `biome check ${lintFiles.join(" ")}`],
     ],
     projectRoot,
   );
@@ -83,7 +87,7 @@ function testCommand(projectRoot) {
   );
 }
 
-function enabledCommands(projectRoot) {
+function enabledCommands(projectRoot, lintFiles, { allowDirectLintFallback }) {
   const commands = [];
 
   if (envEnabled("JS_HOOKS_TYPECHECK")) {
@@ -94,7 +98,9 @@ function enabledCommands(projectRoot) {
   }
 
   if (envEnabled("JS_HOOKS_LINT")) {
-    const lint = lintCommand(projectRoot);
+    const lint = lintCommand(projectRoot, lintFiles, {
+      allowDirectToolFallback: allowDirectLintFallback,
+    });
     if (lint) {
       commands.push(lint);
     }
@@ -151,18 +157,48 @@ function packageJsonFailure(projectRoot) {
   };
 }
 
-function projectRootsToCheck(input) {
+function stopTargets(input) {
   const state = getJsTurnState(input?.turn_id);
   if (state === null) {
     const projectRoot = currentNodeProjectRoot(input);
-    return projectRoot ? [projectRoot] : [];
+    return {
+      projectRoots: projectRoot ? [projectRoot] : [],
+      lintFilesByProjectRoot: new Map(),
+      allowDirectLintFallback: false,
+    };
   }
 
   if (!state.jsChanged || state.projectRoots.length === 0) {
-    return [];
+    return {
+      projectRoots: [],
+      lintFilesByProjectRoot: new Map(),
+      allowDirectLintFallback: true,
+    };
   }
 
-  return state.projectRoots;
+  const lintFilesByProjectRoot = new Map();
+  for (const projectRoot of state.projectRoots) {
+    lintFilesByProjectRoot.set(projectRoot, []);
+  }
+
+  for (const filePath of state.lintFiles || []) {
+    const projectRoot = state.projectRoots.find(
+      (candidateRoot) => filePath === candidateRoot || filePath.startsWith(`${candidateRoot}/`),
+    );
+    if (!projectRoot) {
+      continue;
+    }
+
+    const files = lintFilesByProjectRoot.get(projectRoot) || [];
+    files.push(filePath);
+    lintFilesByProjectRoot.set(projectRoot, files);
+  }
+
+  return {
+    projectRoots: state.projectRoots,
+    lintFilesByProjectRoot,
+    allowDirectLintFallback: true,
+  };
 }
 
 function main(input) {
@@ -170,7 +206,11 @@ function main(input) {
     quitHook({ continue: true });
   }
 
-  const projectRoots = projectRootsToCheck(input);
+  const {
+    projectRoots,
+    lintFilesByProjectRoot,
+    allowDirectLintFallback,
+  } = stopTargets(input);
   if (projectRoots.length === 0) {
     quitHook({ continue: true });
   }
@@ -192,7 +232,10 @@ function main(input) {
       continue;
     }
 
-    for (const command of enabledCommands(projectRoot)) {
+    const lintFiles = (lintFilesByProjectRoot.get(projectRoot) || []).sort();
+    for (const command of enabledCommands(projectRoot, lintFiles, {
+      allowDirectLintFallback,
+    })) {
       const failure = runJsCommand(command, projectRoot);
       if (!failure) {
         continue;

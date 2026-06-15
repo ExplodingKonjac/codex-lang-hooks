@@ -24,15 +24,11 @@
       "updated": "2026-06-13T14:39:49Z"
     },
     "api.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506"
       },
       "matched_paths": [
         "README.md",
@@ -64,28 +60,17 @@
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "architecture.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "42393f8f7e5e6ef827d525d8d08d7b082cabb797e734c014b8a19a844e2bfaed",
-        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "1d1303c2015cb9d195b4cbf464f11a2a90ea90d3db1ec493c625f153251770db",
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -152,26 +137,17 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "conventions.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [
         "README.md",
@@ -232,10 +208,10 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "data-model.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {},
       "matched_paths": [
         "plugins/cpp-lang-hooks/scripts/common/turn_state.mjs",
@@ -243,7 +219,7 @@
         "plugins/rust-lang-hooks/scripts/common/turn_state.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:39:49Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "deployment.md": {
       "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
@@ -263,23 +239,14 @@
       "updated": "2026-06-13T14:39:49Z"
     },
     "implementation.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -339,51 +306,30 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "progress.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "42393f8f7e5e6ef827d525d8d08d7b082cabb797e734c014b8a19a844e2bfaed",
-        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "1d1303c2015cb9d195b4cbf464f11a2a90ea90d3db1ec493c625f153251770db",
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "stack.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "1d1303c2015cb9d195b4cbf464f11a2a90ea90d3db1ec493c625f153251770db",
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [
         "README.md",
@@ -449,26 +395,17 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     },
     "toolchain.md": {
-      "baseline": "b5b20a76b0c15c52db0ba0ad20d360b39faa7b05",
+      "baseline": "66c64271962b2a4d585bca5c54719a7ba76a7c97",
       "changed_fingerprints": {
-        "plugins/js-lang-hooks/hooks/hooks.json": "59c158425270bbbb47c93d9a86a1f4b4ebb967607923ba625ec60b1fba8cae5a",
-        "plugins/js-lang-hooks/scripts/common/command_failure.mjs": "79e518654c923087756186985a2049949811e3cf0948119870ec7ffffb519c0d",
-        "plugins/js-lang-hooks/scripts/common/hook.mjs": "55e8f92639408fe3e2e97fadde89c14b30e3f0596563c4aa1db7b9e62a4884ec",
-        "plugins/js-lang-hooks/scripts/common/node_runtime.mjs": "8b010547bd15e1903356e1dbe69706e68688fc3f8aeddfa8f88f5f34557ea659",
-        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "04a2f190b6eef58af94a1d25e2d29ce8148d39f6a50c909a961e5e507b76abe4",
-        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "108510e629a105410142a80568337cd7ec24f9abe02bbceaeb0c31bfd5a654ca",
-        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "db5d068dc5a21c7a22cfdf89d06a4e1fc24fb282aa01bf3f3715d43e4b497083",
-        "tests/all.test.mjs": "de478865129eee88b1ef9f0658fe8c10f7a256f7655112107f5a31b4ccd50206",
-        "tests/js-lang-hooks/all.test.mjs": "2313f2b1eb433a8d01007fa4f2ff991d21b85a2c0f3808583d0c7b6604189062",
-        "tests/js-lang-hooks/helpers.mjs": "0cfc63b45fedb4b92b35a191f9bb0db5a291d689f66ec4fbf5c1708096b91154",
-        "tests/js-lang-hooks/node_runtime.test.mjs": "e5dbd31f17a23783be785d9962d0a837736f45930eaf35fdc191aee15e0b20f2",
-        "tests/js-lang-hooks/post_edit_detection.test.mjs": "c4ef001fb6111d5a626ec66ffb474c69cce0f982a1a60bd7c542265c95594578",
-        "tests/js-lang-hooks/post_edit_formatting.test.mjs": "bc0aa034eea58f1ebbb23a1842393355c31635811221aef1acd28153aa490207",
-        "tests/js-lang-hooks/retry_and_output.test.mjs": "ebe9687a479a68e6408d4585cdf3e36eb3ae9e271f5353fbd083ac4017dd543c",
-        "tests/js-lang-hooks/stop_hook.test.mjs": "56906bd7a991d0371c62278dfbf824876a34e5ca6f261207134b7b5db535ad5c"
+        "plugins/js-lang-hooks/scripts/common/turn_state.mjs": "68453d8c0e628a6656bea3b99828d5b05867c6590c670e38f24aadc6cccc7bab",
+        "plugins/js-lang-hooks/scripts/post_edit_hook.mjs": "05601225a7b3eb6b34f3b85aaa382a9dd3cd3a5ea619381aa3ca4eafece0d378",
+        "plugins/js-lang-hooks/scripts/stop_hook.mjs": "9497ed0fe2b599d0cd1bab420cda98a07bb9c8812be43bffd6d7f71950502506",
+        "tests/js-lang-hooks/helpers.mjs": "c26461f7216d8721656a9232dd6af7fa70ee3e29795b9610c56d21c1228d48dc",
+        "tests/js-lang-hooks/retry_and_output.test.mjs": "1300275325729ab115d8870c479c129953118dc5b76a41c34f355fab4e9969ac",
+        "tests/js-lang-hooks/stop_hook.test.mjs": "ab5da8a40d02df9282447fb2f9058ac453727409e0c56b01bb4b9f46b44f9a9e"
       },
       "matched_paths": [
         "README.md",
@@ -529,7 +466,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-13T14:55:40Z"
+      "updated": "2026-06-15T01:14:20Z"
     }
   },
   "version": 1

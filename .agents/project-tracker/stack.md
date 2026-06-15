@@ -38,7 +38,7 @@ sources:
 | C++ hook state DB | SQLite file at `${PLUGIN_DATA}/cpp-lang-hooks.sqlite3` | Records whether a turn changed C/C++ files so `Stop` can skip redundant `ctest` runs. |
 | Rust hook state DB | SQLite file at `${PLUGIN_DATA}/rust-lang-hooks.sqlite3` | Records whether a turn changed Rust files and which Cargo projects need Stop checks. |
 | Python hook state DB | SQLite file at `${PLUGIN_DATA}/python-lang-hooks.sqlite3` | Records whether a turn changed Python files/config and which Python project roots need Stop checks. |
-| JavaScript/TypeScript hook state DB | SQLite file at `${PLUGIN_DATA}/js-lang-hooks.sqlite3` | Records whether a turn changed JS/TS files/config and which JS/TS project roots need Stop checks. |
+| JavaScript/TypeScript hook state DB | SQLite file at `${PLUGIN_DATA}/js-lang-hooks.sqlite3` | Records whether a turn changed JS/TS files/config, which JS/TS project roots need Stop checks, and which existing code files were touched for lint-on-files behavior. |
 | Marketplace manifest | JSON at `.agents/plugins/marketplace.json` | Lists local plugin entries and installation policy. |
 | Plugin manifests | JSON under `.codex-plugin/` | Defines plugin metadata shown by Codex. |
 

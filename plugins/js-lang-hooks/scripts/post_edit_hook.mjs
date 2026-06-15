@@ -130,6 +130,7 @@ function main(input) {
   }
 
   const projectRoots = [];
+  const lintFiles = [];
   const existingFilesByFormatRoot = new Map();
 
   for (const jsPath of jsPaths) {
@@ -139,6 +140,7 @@ function main(input) {
     }
 
     if (isJsCodePath(jsPath) && existsSync(jsPath)) {
+      pushUnique(lintFiles, jsPath);
       const formatRoot = formatRootForPath(jsPath);
       const files = existingFilesByFormatRoot.get(formatRoot) || [];
       pushUnique(files, jsPath);
@@ -146,7 +148,7 @@ function main(input) {
     }
   }
 
-  markJsChanged(input?.turn_id, projectRoots.sort());
+  markJsChanged(input?.turn_id, projectRoots.sort(), lintFiles.sort());
 
   if (shouldRunFormat()) {
     for (const [formatRoot, files] of [...existingFilesByFormatRoot.entries()].sort(

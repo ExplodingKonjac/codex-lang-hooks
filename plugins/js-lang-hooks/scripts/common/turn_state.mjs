@@ -34,6 +34,13 @@ function openDatabase() {
         updated_at TEXT NOT NULL,
         PRIMARY KEY (turn_id, project_root)
       );
+
+      CREATE TABLE IF NOT EXISTS turn_js_files (
+        turn_id TEXT NOT NULL,
+        file_path TEXT NOT NULL,
+        updated_at TEXT NOT NULL,
+        PRIMARY KEY (turn_id, file_path)
+      );
     `);
     return db;
   } catch {
@@ -41,7 +48,7 @@ function openDatabase() {
   }
 }
 
-export function markJsChanged(turnId, projectRoots = []) {
+export function markJsChanged(turnId, projectRoots = [], lintFiles = []) {
   if (typeof turnId !== "string" || turnId.length === 0) {
     return false;
   }
@@ -69,6 +76,16 @@ export function markJsChanged(turnId, projectRoots = []) {
     `);
     for (const projectRoot of projectRoots) {
       insertProject.run(turnId, projectRoot, updatedAt);
+    }
+
+    const insertFile = db.prepare(`
+      INSERT INTO turn_js_files (turn_id, file_path, updated_at)
+      VALUES (?, ?, ?)
+      ON CONFLICT(turn_id, file_path) DO UPDATE SET
+        updated_at = excluded.updated_at
+    `);
+    for (const filePath of lintFiles) {
+      insertFile.run(turnId, filePath, updatedAt);
     }
 
     return true;
@@ -104,9 +121,17 @@ export function getJsTurnState(turnId) {
       .all(turnId)
       .map((projectRow) => projectRow.project_root);
 
+    const lintFiles = db
+      .prepare(
+        "SELECT file_path FROM turn_js_files WHERE turn_id = ? ORDER BY file_path",
+      )
+      .all(turnId)
+      .map((fileRow) => fileRow.file_path);
+
     return {
       jsChanged: Boolean(row.js_changed),
       projectRoots,
+      lintFiles,
     };
   } catch {
     return null;

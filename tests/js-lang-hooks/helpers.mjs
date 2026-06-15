@@ -106,6 +106,15 @@ export function readProjectRoots(pluginData, turnId) {
   );
 }
 
+export function readLintFiles(pluginData, turnId) {
+  return readOrderedColumn(
+    path.join(pluginData, "js-lang-hooks.sqlite3"),
+    "SELECT file_path FROM turn_js_files WHERE turn_id = ? ORDER BY file_path",
+    "file_path",
+    turnId,
+  );
+}
+
 export {
   existsSync,
   hookOutput,
