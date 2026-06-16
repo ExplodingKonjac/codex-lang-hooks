@@ -12,9 +12,9 @@ sources:
   - "templates/**/*.json"
 ---
 
-# Codex Language Hooks
+# Agent Language Hooks
 
-Codex Language Hooks is a cross-tool plugin source for language-specific development hooks. The repo ships C++, Rust, Python, and JavaScript/TypeScript plugins plus a reusable template that emits Codex, Claude Code, and OpenCode artifacts from one scaffold path.
+Agent Language Hooks is a cross-tool plugin source for language-specific development hooks. The repo ships C++, Rust, Python, and JavaScript/TypeScript plugins plus a reusable template that emits Codex, Claude Code, and OpenCode artifacts from one scaffold path.
 
 ## Table of Contents
 

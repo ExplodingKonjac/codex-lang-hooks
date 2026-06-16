@@ -1,6 +1,6 @@
-# Codex Language Hooks
+# Agent Language Hooks
 
-Codex Language Hooks is a cross-tool plugin source for language-specific development hooks. The repo emits install/runtime artifacts for Codex, Claude Code, and OpenCode while keeping one shared set of hook scripts per language plugin.
+Agent Language Hooks is a cross-tool plugin source for language-specific development hooks. The repo emits install/runtime artifacts for Codex, Claude Code, and OpenCode while keeping one shared set of hook scripts per language plugin.
 
 The Codex marketplace manifest lives at `.agents/plugins/marketplace.json`, the Claude Code marketplace manifest lives at `.claude-plugin/marketplace.json`, plugin sources live under `plugins/`, and reusable scaffolding lives under `templates/`.
 

@@ -45,7 +45,7 @@ function runtimeCwd(value, fallbackDirectory, fallbackWorktree) {
 function defaultPluginDataDir(pluginName, cwd) {
   const root =
     process.env.CODEX_LANG_HOOKS_OPENCODE_DATA_ROOT ||
-    path.join(tmpdir(), "codex-language-hooks-opencode");
+    path.join(tmpdir(), "agent-lang-hooks-opencode");
   const worktreeHash = createHash("sha1").update(cwd).digest("hex");
   return path.join(root, pluginName, worktreeHash);
 }
