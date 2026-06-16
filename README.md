@@ -1,20 +1,69 @@
-# Codex Language Hooks
+# Agent Language Hooks
 
-Codex Language Hooks is a repo-local Codex plugin marketplace for language-specific hook plugins.
+Agent Language Hooks is a cross-tool plugin source for language-specific development hooks. The repo emits install/runtime artifacts for Codex, Claude Code, and OpenCode while keeping one shared set of hook scripts per language plugin.
 
-The marketplace manifest lives at `.agents/plugins/marketplace.json`, plugin sources live under `plugins/`, and reusable scaffolding lives under `templates/`.
+The Codex marketplace manifest lives at `.agents/plugins/marketplace.json`, the Claude Code marketplace manifest lives at `.claude-plugin/marketplace.json`, plugin sources live under `plugins/`, and reusable scaffolding lives under `templates/`.
+
+## Installation
+
+Clone this repository first and keep the checkout in place. Codex and Claude Code can consume the checkout as a marketplace source; OpenCode uses generated local proxy files that point back to this checkout.
+
+### Codex
+
+Add this repository as a Codex marketplace. Codex reads the marketplace catalog from `.agents/plugins/marketplace.json`, and each installable plugin has its own manifest at `plugins/<name>/.codex-plugin/plugin.json`.
+
+After adding the marketplace, install the language plugin you want from the available marketplace entries, such as `cpp-lang-hooks`, `rust-lang-hooks`, `python-lang-hooks`, or `js-lang-hooks`.
+
+### Claude Code
+
+Add this repository as a Claude Code marketplace. Claude Code reads the marketplace catalog from `.claude-plugin/marketplace.json`, and each installable plugin has its own manifest at `plugins/<name>/.claude-plugin/plugin.json`.
+
+After adding the marketplace, install the language plugin you want from the available marketplace entries, such as `cpp-lang-hooks`, `rust-lang-hooks`, `python-lang-hooks`, or `js-lang-hooks`.
+
+### OpenCode
+
+OpenCode does not currently consume this repository as a marketplace manifest. Instead, install repo-local proxy modules into OpenCode's plugin directory.
+
+Install all plugins globally:
+
+```bash
+python3 scripts/install_opencode_plugin.py --scope global --plugins all
+```
+
+Install all plugins for one project:
+
+```bash
+python3 scripts/install_opencode_plugin.py --scope project --project-dir /path/to/project --plugins all
+```
+
+Install selected plugins with a comma-separated list:
+
+```bash
+python3 scripts/install_opencode_plugin.py --scope global --plugins rust-lang-hooks,python-lang-hooks
+```
+
+The installer writes small generated `.mjs` proxy files into `~/.config/opencode/plugins/` for global installs or `<project>/.opencode/plugins/` for project installs. Each proxy loads the existing `plugins/<name>/opencode/plugin.mjs` module through an absolute `file://` URL, so do not move or delete this repository checkout after installing.
 
 ## Layout
 
 ```text
 .agents/plugins/marketplace.json
+.claude-plugin/marketplace.json
 plugins/
+  <plugin>/
+    .codex-plugin/plugin.json
+    .claude-plugin/plugin.json
+    hooks/hooks.json
+    opencode/plugin.mjs
 templates/
   language-hook-template/
     .codex-plugin/plugin.json
+    .claude-plugin/plugin.json
     hooks/hooks.json
+    opencode/plugin.mjs
 scripts/
   create_language_hook_plugin.py
+  install_opencode_plugin.py
 ```
 
 ## Add a Plugin
@@ -25,7 +74,19 @@ python3 scripts/create_language_hook_plugin.py "Python Hooks"
 
 When run in a terminal, the script prompts for display name, author, category, descriptions, brand color, and starter prompts. Use `--non-interactive` to accept generated defaults.
 
-The script copies `templates/language-hook-template`, updates plugin metadata, writes the new plugin under `plugins/`, and appends it to `.agents/plugins/marketplace.json`.
+The script copies `templates/language-hook-template`, updates plugin metadata, writes the new plugin under `plugins/`, appends it to `.agents/plugins/marketplace.json`, updates `.claude-plugin/marketplace.json`, and preserves the shared OpenCode adapter module under `opencode/plugin.mjs`. Re-running the command for an existing plugin is idempotent: manifests and marketplace entries are refreshed in place instead of duplicated.
+
+## Runtime Surfaces
+
+- Codex marketplace catalog: `.agents/plugins/marketplace.json`
+- Claude Code marketplace catalog: `.claude-plugin/marketplace.json`
+- Per-plugin Codex manifest: `plugins/<name>/.codex-plugin/plugin.json`
+- Per-plugin Claude Code manifest: `plugins/<name>/.claude-plugin/plugin.json`
+- Shared Codex/Claude hook runtime: `plugins/<name>/hooks/hooks.json`
+- OpenCode adapter: `plugins/<name>/opencode/plugin.mjs`
+- OpenCode runtime model: the adapter maps `tool.execute.after` to the existing post-edit hook scripts and `session.idle` to the existing stop hook scripts
+
+OpenCode support is intentionally best-effort for v1. It surfaces failures through the plugin event/logging path rather than reproducing Claude-style Stop blocking exactly.
 
 ## Plugin Documents
 
