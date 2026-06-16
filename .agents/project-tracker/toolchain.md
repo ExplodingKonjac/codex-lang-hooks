@@ -17,6 +17,7 @@ sources:
 | Tool | Command | Output |
 |------|---------|--------|
 | Python script | `python3 scripts/create_language_hook_plugin.py "<NAME>"` | New plugin directory under `plugins/` plus Codex marketplace entry, Claude marketplace entry, and OpenCode adapter module. |
+| Python script | `python3 scripts/install_opencode_plugin.py --scope global --plugins all` | Generated OpenCode proxy modules under the selected global or project OpenCode plugin directory. |
 | Node.js | `node <HOOK_SCRIPT>` | Hook JSON response on stdout. |
 
 There is no compile or bundle step for the repository itself.
@@ -26,7 +27,7 @@ There is no compile or bundle step for the repository itself.
 | Tool | Config file | Run command |
 |------|-------------|-------------|
 | Node syntax checker | N/A | `node --check <FILE>.mjs` |
-| Python bytecode check | N/A | `python3 -m py_compile scripts/create_language_hook_plugin.py` |
+| Python bytecode check | N/A | `python3 -m py_compile scripts/create_language_hook_plugin.py scripts/install_opencode_plugin.py` |
 | Language-specific host tools | Project-local configs if present | Invoked automatically by the language hooks when enabled. |
 
 ## Testing
@@ -35,7 +36,7 @@ There is no compile or bundle step for the repository itself.
 |--------|--------|
 | Framework | Node built-in test runner |
 | Main commands | `node --test tests/all.test.mjs`; focused suites can also target `tests/cross_tool_marketplace.test.mjs` and the existing per-language suites under `tests/*-lang-hooks/` |
-| Integration style | Tests spawn hook scripts with JSON stdin, temp language-project fixtures, fake host tools, temp `PLUGIN_DATA`, and shared harness helpers from `tests/shared/`. |
+| Integration style | Tests spawn hook scripts and installer CLIs with temp language-project fixtures, fake host tools, temp `PLUGIN_DATA`, temp OpenCode HOME/project directories, and shared harness helpers from `tests/shared/`. |
 
 ## CI/CD Pipeline
 
@@ -51,7 +52,7 @@ There is no compile or bundle step for the repository itself.
 | Requirement | Value |
 |-------------|-------|
 | Node.js | Required for hook scripts and tests; Node 24.x is used locally because the state helpers import `node:sqlite`. |
-| Python | Required for `scripts/create_language_hook_plugin.py`. |
+| Python | Required for `scripts/create_language_hook_plugin.py` and `scripts/install_opencode_plugin.py`. |
 | Optional C++ tools | `clang-format`, `clang-tidy`, `cmake`, `ctest` |
 | Optional Rust tools | `cargo`, `rustfmt` |
 | Optional Python tools | `ruff`, `black`, `isort`, `yapf`, `ty`, `pyre`, `pyright`, `mypy`, `pylint`, `pytest` |

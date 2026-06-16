@@ -2,6 +2,7 @@
 sources:
   - "README.md"
   - ".github/workflows/*.yml"
+  - "scripts/*.py"
   - "plugins/**/*.mjs"
   - "plugins/**/*.json"
   - "templates/**/*.mjs"
@@ -13,7 +14,7 @@ sources:
 
 ## Current Phase
 
-Cross-tool plugin source with C++, Rust, Python, and JavaScript/TypeScript hook extraction, split regression coverage, and emitted install/runtime artifacts for Codex, Claude Code, and OpenCode.
+Cross-tool plugin source with C++, Rust, Python, and JavaScript/TypeScript hook extraction, split regression coverage, emitted install/runtime artifacts for Codex and Claude Code, and a local proxy installer for OpenCode.
 
 ## Completed
 
@@ -24,10 +25,12 @@ Cross-tool plugin source with C++, Rust, Python, and JavaScript/TypeScript hook 
 - [x] Extended `create_language_hook_plugin.py` to update Codex and Claude marketplace catalogs, emit both manifest types, and refresh existing plugin directories idempotently.
 - [x] Added cross-tool regression coverage for generator idempotency and OpenCode idle/post-edit adapter behavior.
 - [x] Updated GitHub Actions smoke coverage so the temp-repo path validates Codex, Claude Code, and OpenCode artifacts together.
+- [x] Added `scripts/install_opencode_plugin.py` plus README installation guidance for Codex, Claude Code, and OpenCode local proxy installs.
+- [x] Added OpenCode installer tests for plugin discovery, global/project destinations, proxy content, idempotency, and overwrite protection.
 
 ## In Progress
 
-- [ ] Tighten the OpenCode installation story beyond local adapter modules if npm packaging becomes a requirement.
+- [ ] Decide whether OpenCode should also gain a first-class npm packaging path.
 
 ## Known Issues & Technical Debt
 
@@ -40,3 +43,4 @@ Cross-tool plugin source with C++, Rust, Python, and JavaScript/TypeScript hook 
 - [ ] Add more language hook plugins using the template generator.
 - [ ] Decide whether OpenCode should stay file-based only or gain a first-class npm packaging path.
 - [x] Added documentation and validation for cross-tool marketplace entry consistency.
+- [x] Added local OpenCode proxy installation for users who cannot consume the repo as a marketplace.

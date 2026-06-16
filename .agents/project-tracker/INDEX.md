@@ -7,6 +7,7 @@ sources:
   - "plugins/*/.codex-plugin/plugin.json"
   - "plugins/*/.claude-plugin/plugin.json"
   - "plugins/**/opencode/*.mjs"
+  - "scripts/*.py"
   - "templates/*/.codex-plugin/plugin.json"
   - "templates/*/.claude-plugin/plugin.json"
   - "templates/**/*.json"
@@ -39,7 +40,7 @@ Agent Language Hooks is a cross-tool plugin source for language-specific develop
 | CI/CD | GitHub Actions | `.github/workflows/ci.yml` runs syntax checks, the full Node suite, and a generator smoke test |
 
 - Codex metadata is stored in `.codex-plugin/plugin.json`; Claude metadata is stored in `.claude-plugin/plugin.json`; Codex and Claude share `hooks/hooks.json`.
-- OpenCode adapters live in `opencode/plugin.mjs` and reuse the existing hook scripts through `scripts/common/opencode_adapter.mjs`.
+- OpenCode adapters live in `opencode/plugin.mjs`, reuse the existing hook scripts through `scripts/common/opencode_adapter.mjs`, and can be exposed to OpenCode with generated proxy files from `scripts/install_opencode_plugin.py`.
 - `scripts/create_language_hook_plugin.py` copies the template plugin and updates both marketplace catalogs plus both manifest types.
 - `.github/workflows/ci.yml` runs Node syntax checks across repo `.mjs` files, the full `tests/all.test.mjs` suite, and a temp-repo smoke test that asserts Codex, Claude Code, and OpenCode artifacts together.
 
@@ -51,6 +52,9 @@ python3 scripts/create_language_hook_plugin.py "Python Hooks"
 
 # Create with generated defaults
 python3 scripts/create_language_hook_plugin.py "Python Hooks" --non-interactive
+
+# Install all repo-local plugins into the global OpenCode plugin directory
+python3 scripts/install_opencode_plugin.py --scope global --plugins all
 
 # Run the full regression suite
 node --test tests/all.test.mjs
@@ -73,7 +77,8 @@ find plugins tests templates -name '*.mjs' -print | sort | xargs -n 1 node --che
 - `plugins/js-lang-hooks/` — JavaScript/TypeScript language hook plugin with Codex/Claude manifests and OpenCode adapter.
 - `templates/language-hook-template/` — template copied when creating new language plugins.
 - `scripts/create_language_hook_plugin.py` — cross-tool plugin scaffolding CLI.
-- `tests/cross_tool_marketplace.test.mjs` — generator idempotency and OpenCode adapter coverage.
+- `scripts/install_opencode_plugin.py` — OpenCode local installer that writes proxy modules into global or project plugin directories.
+- `tests/cross_tool_marketplace.test.mjs` — generator idempotency, OpenCode installer, and OpenCode adapter coverage.
 
 ## Tracking Exclusions
 

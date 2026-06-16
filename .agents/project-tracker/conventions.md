@@ -22,7 +22,7 @@ sources:
 |--------|------|--------|
 | JavaScript modules | Use ES module imports in `.mjs` files. | Existing hook scripts |
 | JavaScript style | Two-space indentation, double quotes, semicolons, trailing commas in multiline calls/arrays. | Existing hook scripts/tests |
-| Python style | Type hints, dataclass for structured metadata, standard-library-only implementation. | `scripts/create_language_hook_plugin.py` |
+| Python style | Type hints, dataclass for structured metadata, standard-library-only implementation. | `scripts/create_language_hook_plugin.py`, `scripts/install_opencode_plugin.py` |
 | JSON style | Two-space indentation and trailing newline when written by scripts. | `write_json()` |
 | Formatter config | Not specified. | N/A |
 
@@ -53,6 +53,7 @@ sources:
 - JavaScript/TypeScript config detection should cover common root/tool config files such as Vite, Rollup, Webpack, tsup, Babel, ESLint, Prettier, and Jest/Vitest configs.
 - Template files should remain generic; language-specific behavior belongs under `plugins/<plugin-name>/`.
 - OpenCode adapters should remain thin compatibility wrappers over the existing hook scripts rather than re-implementing language-specific checks independently.
+- OpenCode installer output should be small generated proxy modules with an ownership header and absolute `file://` imports back to the repo-local adapter modules.
 - **Forbidden**: destructive generator behavior that deletes or blindly replaces an existing plugin directory.
 
 ## File Organization
@@ -62,7 +63,7 @@ sources:
 | Marketplace manifests | `.agents/plugins/marketplace.json`, `.claude-plugin/marketplace.json` | Repo-local plugin lists for Codex and Claude Code. |
 | Plugin sources | `plugins/<plugin-name>/` | Installable plugin metadata, hooks, and scripts. |
 | Template source | `templates/language-hook-template/` | Copied by the generator. |
-| Generator scripts | `scripts/` | Python utility scripts. |
+| Utility scripts | `scripts/` | Python generator and OpenCode installer CLIs. |
 | Tests | `tests/<plugin-name>/` and `tests/shared/` | Split suites use per-language `all.test.mjs`, focused `*.test.mjs`, `helpers.mjs`, and shared runtime/SQLite helpers. |
 | Tracker docs | `.agents/project-tracker/` | Generated project documentation. |
 
@@ -82,6 +83,7 @@ sources:
 - `runHook()` catches unhandled hook errors, writes `hook_errors.log` under `PLUGIN_DATA` when available, and exits non-zero.
 - SQLite state helpers return booleans/null instead of throwing so hook execution can fail open.
 - Python generator errors are explicit exceptions or `SystemExit` with readable messages.
+- The OpenCode installer refuses to overwrite non-generated local plugin files unless `--force` is passed.
 
 ## Testing Conventions
 
@@ -92,6 +94,7 @@ sources:
 - State-related tests should include fail-open scenarios for missing `turn_id` or `PLUGIN_DATA`.
 - Failure-output tests should cover long output trimming, invalid output-limit fallback, both-stream labeling, retry-mode system messages, aggregated retry failures, and empty-output exit-status fallback.
 - JavaScript/TypeScript tests should also cover package-script-first Stop behavior and standalone-file skip behavior when no project root is discoverable.
+- OpenCode installer tests should use temp HOME/project directories rather than writing to a real OpenCode config directory.
 
 ## Documentation Conventions
 

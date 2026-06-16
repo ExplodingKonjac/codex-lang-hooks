@@ -1,21 +1,10 @@
 {
   "files": {
     "INDEX.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "1e842e9f3bb40b5ca939b715b62e443fe13452847d886992a5f0468ed26e9847",
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/.claude-plugin/plugin.json": "e0b6df648e1b38ac3fa9eb941c17bd8d717b5aaae062e59308edc347a4040ffa",
-        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json": "52e5949f801d59fb43f876d17e3ed30fe94d0ad9a0aab1e531d009f37c7e9032",
-        "plugins/js-lang-hooks/.claude-plugin/plugin.json": "ef0bcae4e7dd3ac350eb09d3d40cc01801578cef5088d96f22b90e152188b7dd",
-        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "e34c75c982a2b9b4311ae46d0cd9f276ab9038a431547aa025a8ed2baf5f4d56",
-        "plugins/python-lang-hooks/.claude-plugin/plugin.json": "0f3a0d5d606eed8f55be0cd72b8fd45ae4361f8fcb9622190a15eac5ccc5af22",
-        "plugins/python-lang-hooks/.codex-plugin/plugin.json": "554b482107960a4a51b81700a3e7077626ebeb76bbff6f3935aa89496ec8e167",
-        "plugins/rust-lang-hooks/.claude-plugin/plugin.json": "08984b4ec72539118898208bf827fc0860fc98ca94127b4e62a6364fe2dc24f8",
-        "plugins/rust-lang-hooks/.codex-plugin/plugin.json": "2920f2c7727dac01609fee4c1bc2ba2fa95b02a717391370cdb441a848d3359b",
-        "templates/language-hook-template/.claude-plugin/plugin.json": "7b98694afb8ecdff31aa4207d9fd403b3ccfa386a01c70b466de3fd798471810",
-        "templates/language-hook-template/.codex-plugin/plugin.json": "a303a3f09bebbd2f4bfc56f226e15522ddf0cb992eeb3e6277193ef68bfb0b40"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -34,24 +23,19 @@
         "plugins/rust-lang-hooks/.claude-plugin/plugin.json",
         "plugins/rust-lang-hooks/.codex-plugin/plugin.json",
         "plugins/rust-lang-hooks/opencode/plugin.mjs",
+        "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/.claude-plugin/plugin.json",
         "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T08:53:01Z"
     },
     "api.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/.claude-plugin/plugin.json": "7b98694afb8ecdff31aa4207d9fd403b3ccfa386a01c70b466de3fd798471810",
-        "templates/language-hook-template/.codex-plugin/plugin.json": "a303a3f09bebbd2f4bfc56f226e15522ddf0cb992eeb3e6277193ef68bfb0b40"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
       },
       "matched_paths": [
         ".claude-plugin/marketplace.json",
@@ -91,23 +75,18 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/.claude-plugin/plugin.json",
         "templates/language-hook-template/.codex-plugin/plugin.json"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T08:53:01Z"
     },
     "architecture.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "1e842e9f3bb40b5ca939b715b62e443fe13452847d886992a5f0468ed26e9847",
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -149,6 +128,7 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/opencode/plugin.mjs",
         "templates/language-hook-template/scripts/common/hook.mjs",
@@ -186,21 +166,14 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     },
     "conventions.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/.claude-plugin/plugin.json": "7b98694afb8ecdff31aa4207d9fd403b3ccfa386a01c70b466de3fd798471810",
-        "templates/language-hook-template/.codex-plugin/plugin.json": "a303a3f09bebbd2f4bfc56f226e15522ddf0cb992eeb3e6277193ef68bfb0b40",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [
         ".claude-plugin/marketplace.json",
@@ -240,6 +213,7 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/.claude-plugin/plugin.json",
         "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json",
@@ -279,7 +253,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     },
     "data-model.md": {
       "baseline": "6703680af597a1cfdb41bfbe035ada6f4311cb44",
@@ -297,15 +271,10 @@
       "updated": "2026-06-15T07:21:45Z"
     },
     "deployment.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "1e842e9f3bb40b5ca939b715b62e443fe13452847d886992a5f0468ed26e9847",
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -346,19 +315,17 @@
         "plugins/rust-lang-hooks/scripts/common/turn_state.mjs",
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
+        "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T08:53:01Z"
     },
     "implementation.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -396,6 +363,7 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/opencode/plugin.mjs",
         "templates/language-hook-template/scripts/common/hook.mjs",
@@ -433,44 +401,24 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     },
     "progress.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        ".agents/plugins/marketplace.json": "1e842e9f3bb40b5ca939b715b62e443fe13452847d886992a5f0468ed26e9847",
-        ".claude-plugin/marketplace.json": "3baade103a1278876278ab669e214836d40e16534a4aba0a6fb78a85fe226602",
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/.claude-plugin/plugin.json": "e0b6df648e1b38ac3fa9eb941c17bd8d717b5aaae062e59308edc347a4040ffa",
-        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json": "52e5949f801d59fb43f876d17e3ed30fe94d0ad9a0aab1e531d009f37c7e9032",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/.claude-plugin/plugin.json": "ef0bcae4e7dd3ac350eb09d3d40cc01801578cef5088d96f22b90e152188b7dd",
-        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "e34c75c982a2b9b4311ae46d0cd9f276ab9038a431547aa025a8ed2baf5f4d56",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/.claude-plugin/plugin.json": "0f3a0d5d606eed8f55be0cd72b8fd45ae4361f8fcb9622190a15eac5ccc5af22",
-        "plugins/python-lang-hooks/.codex-plugin/plugin.json": "554b482107960a4a51b81700a3e7077626ebeb76bbff6f3935aa89496ec8e167",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/.claude-plugin/plugin.json": "08984b4ec72539118898208bf827fc0860fc98ca94127b4e62a6364fe2dc24f8",
-        "plugins/rust-lang-hooks/.codex-plugin/plugin.json": "2920f2c7727dac01609fee4c1bc2ba2fa95b02a717391370cdb441a848d3359b",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/.claude-plugin/plugin.json": "7b98694afb8ecdff31aa4207d9fd403b3ccfa386a01c70b466de3fd798471810",
-        "templates/language-hook-template/.codex-plugin/plugin.json": "a303a3f09bebbd2f4bfc56f226e15522ddf0cb992eeb3e6277193ef68bfb0b40",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     },
     "stack.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [
         ".github/workflows/ci.yml",
@@ -510,6 +458,7 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/opencode/plugin.mjs",
         "templates/language-hook-template/scripts/common/hook.mjs",
@@ -547,18 +496,14 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     },
     "toolchain.md": {
-      "baseline": "60915e897689fd4ce97dd2c45b8ee124eaa92838",
+      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
       "changed_fingerprints": {
-        "README.md": "50d187b7019e4ce1e620514860228dee24aba9bbcdbe585d25476e56ca6571f5",
-        "plugins/cpp-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/js-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/python-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "plugins/rust-lang-hooks/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42",
-        "scripts/create_language_hook_plugin.py": "5db1f097a280103db789d5f84b8a2eec026d1d7b4f4b3418bb3f8ecf221c4d79",
-        "templates/language-hook-template/scripts/common/opencode_adapter.mjs": "edd86b52e5eee2f9e09ebe70b96e20cde961fc3d7ef0240193405727b097ac42"
+        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
+        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
+        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
       },
       "matched_paths": [
         ".github/workflows/ci.yml",
@@ -598,6 +543,7 @@
         "plugins/rust-lang-hooks/scripts/post_edit_hook.mjs",
         "plugins/rust-lang-hooks/scripts/stop_hook.mjs",
         "scripts/create_language_hook_plugin.py",
+        "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json",
         "templates/language-hook-template/opencode/plugin.mjs",
         "templates/language-hook-template/scripts/common/hook.mjs",
@@ -635,7 +581,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T06:24:51Z"
+      "updated": "2026-06-16T09:02:43Z"
     }
   },
   "version": 1
