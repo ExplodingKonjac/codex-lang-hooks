@@ -52,6 +52,7 @@ sources:
 - JavaScript/TypeScript package-script execution should use manager-specific invocation forms instead of assuming every package manager uses the same script syntax.
 - JavaScript/TypeScript config detection should cover common root/tool config files such as Vite, Rollup, Webpack, tsup, Babel, ESLint, Prettier, and Jest/Vitest configs.
 - Template files should remain generic; language-specific behavior belongs under `plugins/<plugin-name>/`.
+- Hook config JSON should stay tool-consumable and omit `$schema` metadata fields.
 - OpenCode adapters should remain thin compatibility wrappers over the existing hook scripts rather than re-implementing language-specific checks independently.
 - OpenCode installer output should be small generated proxy modules with an ownership header and absolute `file://` imports back to the repo-local adapter modules.
 - **Forbidden**: destructive generator behavior that deletes or blindly replaces an existing plugin directory.

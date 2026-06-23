@@ -1,10 +1,20 @@
 {
   "files": {
     "INDEX.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "plugins/cpp-lang-hooks/.claude-plugin/plugin.json": "8797a6e4217c56e31156784b6a8520c675995474480174611e7871cb6dd492f2",
+        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json": "ec98628d668b7a375b9f655ebcbf4cc26f6d9b7501ee8e3a87d3b2f582d6b3c1",
+        "plugins/js-lang-hooks/.claude-plugin/plugin.json": "f10607c673afc89768b8f3109d41e3285a9abffab8eded9b35c126bb5f4721a4",
+        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "2d9ac6e15bcd046db3ba3705a96a4fe9569b5935c07a2329875bac986ed5c3e4",
+        "plugins/python-lang-hooks/.claude-plugin/plugin.json": "4ada6553a83e61432e01345a565351effcff5168849907e4f766bdc27f14de5b",
+        "plugins/python-lang-hooks/.codex-plugin/plugin.json": "3941a772f8231532f1dd05d68b1d746a6e3f6069c53f497d4e520af481e5cdea",
+        "plugins/rust-lang-hooks/.claude-plugin/plugin.json": "1ddb2e44e20be0d01967623cbe2579dcbc7e7c1c013b4f776c54e6feeece83f6",
+        "plugins/rust-lang-hooks/.codex-plugin/plugin.json": "189708eb2646b2c04525ed224beb8643e2eb69dfe16139b902c760e6239b1f5a",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b",
+        "templates/language-hook-template/.claude-plugin/plugin.json": "080499f19976e4fae6ab61d60652829477283ababac74ad380efe9ecd8a52c16",
+        "templates/language-hook-template/.codex-plugin/plugin.json": "888652735a6af727b8156e800d190c6162e00b9884f29ada9ba0535ead3bf1b8"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -29,13 +39,15 @@
         "templates/language-hook-template/.codex-plugin/plugin.json",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-16T08:53:01Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "api.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b",
+        "templates/language-hook-template/.claude-plugin/plugin.json": "080499f19976e4fae6ab61d60652829477283ababac74ad380efe9ecd8a52c16",
+        "templates/language-hook-template/.codex-plugin/plugin.json": "888652735a6af727b8156e800d190c6162e00b9884f29ada9ba0535ead3bf1b8"
       },
       "matched_paths": [
         ".claude-plugin/marketplace.json",
@@ -79,14 +91,13 @@
         "templates/language-hook-template/.claude-plugin/plugin.json",
         "templates/language-hook-template/.codex-plugin/plugin.json"
       ],
-      "updated": "2026-06-16T08:53:01Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "architecture.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -166,14 +177,15 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "conventions.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b",
+        "templates/language-hook-template/.claude-plugin/plugin.json": "080499f19976e4fae6ab61d60652829477283ababac74ad380efe9ecd8a52c16",
+        "templates/language-hook-template/.codex-plugin/plugin.json": "888652735a6af727b8156e800d190c6162e00b9884f29ada9ba0535ead3bf1b8"
       },
       "matched_paths": [
         ".claude-plugin/marketplace.json",
@@ -253,7 +265,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "data-model.md": {
       "baseline": "6703680af597a1cfdb41bfbe035ada6f4311cb44",
@@ -271,10 +283,10 @@
       "updated": "2026-06-15T07:21:45Z"
     },
     "deployment.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b"
       },
       "matched_paths": [
         ".agents/plugins/marketplace.json",
@@ -319,13 +331,12 @@
         "scripts/install_opencode_plugin.py",
         "templates/language-hook-template/hooks/hooks.json"
       ],
-      "updated": "2026-06-16T08:53:01Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "implementation.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b"
       },
       "matched_paths": [
         "plugins/cpp-lang-hooks/hooks/hooks.json",
@@ -401,24 +412,31 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "progress.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        ".claude-plugin/marketplace.json": "fbf9d49db8690abf5cccab639bfc70e9deee4c998c571e534334e71a6530ac70",
+        "plugins/cpp-lang-hooks/.claude-plugin/plugin.json": "8797a6e4217c56e31156784b6a8520c675995474480174611e7871cb6dd492f2",
+        "plugins/cpp-lang-hooks/.codex-plugin/plugin.json": "ec98628d668b7a375b9f655ebcbf4cc26f6d9b7501ee8e3a87d3b2f582d6b3c1",
+        "plugins/js-lang-hooks/.claude-plugin/plugin.json": "f10607c673afc89768b8f3109d41e3285a9abffab8eded9b35c126bb5f4721a4",
+        "plugins/js-lang-hooks/.codex-plugin/plugin.json": "2d9ac6e15bcd046db3ba3705a96a4fe9569b5935c07a2329875bac986ed5c3e4",
+        "plugins/python-lang-hooks/.claude-plugin/plugin.json": "4ada6553a83e61432e01345a565351effcff5168849907e4f766bdc27f14de5b",
+        "plugins/python-lang-hooks/.codex-plugin/plugin.json": "3941a772f8231532f1dd05d68b1d746a6e3f6069c53f497d4e520af481e5cdea",
+        "plugins/rust-lang-hooks/.claude-plugin/plugin.json": "1ddb2e44e20be0d01967623cbe2579dcbc7e7c1c013b4f776c54e6feeece83f6",
+        "plugins/rust-lang-hooks/.codex-plugin/plugin.json": "189708eb2646b2c04525ed224beb8643e2eb69dfe16139b902c760e6239b1f5a",
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b",
+        "templates/language-hook-template/.claude-plugin/plugin.json": "080499f19976e4fae6ab61d60652829477283ababac74ad380efe9ecd8a52c16",
+        "templates/language-hook-template/.codex-plugin/plugin.json": "888652735a6af727b8156e800d190c6162e00b9884f29ada9ba0535ead3bf1b8"
       },
       "matched_paths": [],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "stack.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b"
       },
       "matched_paths": [
         ".github/workflows/ci.yml",
@@ -496,14 +514,12 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     },
     "toolchain.md": {
-      "baseline": "6c111e5dbf789b39007ecd5844491978a3fab37a",
+      "baseline": "a74d54b63c99d7cc178de1951fa4f312b5f64cfd",
       "changed_fingerprints": {
-        "README.md": "8d12a4d4f9dcaa8283b58d4dc18d12493af7c3e83e6bcf4f1025db51ab496704",
-        "scripts/install_opencode_plugin.py": "7aa2300bc34a7595576c3c1ac65fce00ed71aef272bd7038b27f7d15e097ad1a",
-        "tests/cross_tool_marketplace.test.mjs": "8665a5ac9a32d4382078a4cf7997782e1da015aff40acef454549fa22815d792"
+        "scripts/create_language_hook_plugin.py": "596da0bdd0f924fab394b06accebc8e892f3285a83dc25968d34f5f86aaded4b"
       },
       "matched_paths": [
         ".github/workflows/ci.yml",
@@ -581,7 +597,7 @@
         "tests/shared/runtime.mjs",
         "tests/shared/sqlite.mjs"
       ],
-      "updated": "2026-06-16T09:02:43Z"
+      "updated": "2026-06-23T02:46:22Z"
     }
   },
   "version": 1
